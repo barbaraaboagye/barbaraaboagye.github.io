@@ -4,7 +4,7 @@ title:      "Objective-C Dynamic Magic"
 subtitle:   "The Devil is in the detail"
 date:       2014-09-21 12:00:00
 author:     "Nickolas Hu"
-header-img: "img/objc-dynamic-magic.jpeg"
+header-img: "img/objc-dynamic-magic.jpg"
 ---
 
 ## Intro
