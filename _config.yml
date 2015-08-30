@@ -1,10 +1,10 @@
 # Site settings
 title: Clean Blog
 header-img: img/home-bg.jpg
-email: your-email@yourdomain.com
+email: huc1011@gmail.com
 description: "Write your site description here. It will be used as your sites meta description as well!"
 baseurl: ""
-url: "http://yourdomain.com"
+url: "http://nickolashu.github.io"
 twitter_username: SBootstrap
 github_username:  davidtmiller
 facebook_username:  IronSummitMedia
