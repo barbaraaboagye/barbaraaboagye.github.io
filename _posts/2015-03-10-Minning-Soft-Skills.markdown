@@ -7,7 +7,7 @@ author:     "Nickolas"
 header-img: "img/post-soft-skills.jpg"
 ---
 
-I have collated some tips about soft skills which will make you a better software career.
+I have collated some tips about soft skills which may make you a better software career. All these thoughts come from the book [《Soft Skills》](http://book.douban.com/subject/26312275/)
 
 ## What kind of software developer are you? ---- Keep Focus
 >You wouldn’t want to have a divorce lawyer represent you for a tax or real estate problem, so specialization is important. A lawyer doesn’t come out of law school and decide they just want to be a “lawyer,” but unfortunately that’s exactly what most software developers do when it comes to their profession.
@@ -75,6 +75,6 @@ I have collated some tips about soft skills which will make you a better softwar
 ## Time waste ---- Tips about Time Management
 >Stop watching TV. We live in a world where a majority of people waste a large chunk of their lives watching TV with no benefit to themselves or society. The more you watch, the more you’re giv- ing up control of your own mind and actions. The TV is literally pro- graming you.
 
-All these thoughts come from the book [《Soft Skills》](http://book.douban.com/subject/26312275/)
+
 
 
