@@ -4,7 +4,7 @@ title:      "Soft skills every programmer shold have."
 subtitle:   "Good developer knows not only how to develop program, but also how to win in real life."
 date:       2015-03-10 12:00:00
 author:     "Nickolas"
-header-img: "img/post-bg-01.jpg"
+header-img: "img/post-soft-skills.jpg"
 ---
 
 I have collated some tips about soft skills which will make you a better software career.
