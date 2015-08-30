@@ -1,13 +1,13 @@
 # Site settings
-title: Clean Blog
+title: Nickolas Blog
 header-img: img/home-bg.jpg
 email: huc1011@gmail.com
-description: "Write your site description here. It will be used as your sites meta description as well!"
+description: "A blog about software craft, engineering and spirit."
 baseurl: ""
-url: "http://nickolashu.github.io"
-twitter_username: SBootstrap
-github_username:  davidtmiller
-facebook_username:  IronSummitMedia
+url: "http://nickolashu.github.io/"
+twitter_username: Nickolas_OMG
+github_username:  NickolasHu
+facebook_username:  Nickolas
 
 # Build settings
 markdown: kramdown
@@ -15,3 +15,5 @@ highlighter: pygments
 permalink: pretty
 paginate: 5
 exclude: ["less","node_modules","Gruntfile.js","package.json","README.md"]
+
+gems:  [jekyll-sitemap]
