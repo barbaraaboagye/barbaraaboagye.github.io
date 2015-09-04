@@ -17,6 +17,7 @@ header-img: "img/post-bg-05.jpg"
 猜测是UILabel只支持一行文本的截断或者不截断的多行文本...
 
 我用了个比较hack的方法处理firstLineIndent, 通过在头部使用空格做出缩进的效果. 思路是使用较小的字体,填充缩进区域,字体越小效果越精确.
+
 ```
             // 使用@“ “做firstLineIntent
             CGSize stringBoundingBox = [@“ “ sizeWithFont:[UIFont systemFontOfSize:10]];
