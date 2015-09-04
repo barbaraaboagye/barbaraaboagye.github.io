@@ -18,14 +18,11 @@ header-img: "img/post-bg-05.jpg"
 
 我用了个比较hack的方法处理firstLineIndent, 通过在头部使用空格做出缩进的效果. 思路是使用较小的字体,填充缩进区域,字体越小效果越精确.
 
-```
-            // 使用@“ “做firstLineIntent
-            CGSize stringBoundingBox = [@“ “ sizeWithFont:[UIFont systemFontOfSize:10]];
-            CGFloat unitWidth = stringBoundingBox.width;
-            NSInteger spaceNum = (theWidthToIndent) / unitWidth;
-            NSString *firstLineIndentString = [@“” stringByPaddingToLength:spaceNum withString:@“ “ startingAtIndex:0];
-            NSMutableAttributedString *stringWithIntent = [originalString stringByAppendingString:fisrtLineIndentString];
-
-```
+    // 使用@“ “做firstLineIntent
+    CGSize stringBoundingBox = [@“ “ sizeWithFont:[UIFont systemFontOfSize:10]];
+    CGFloat unitWidth = stringBoundingBox.width;
+    NSInteger spaceNum = (theWidthToIndent) / unitWidth;
+    NSString *firstLineIndentString = [@“” stringByPaddingToLength:spaceNum withString:@“ “ startingAtIndex:0];
+    NSMutableAttributedString *stringWithIntent = [originalString stringByAppendingString:fisrtLineIndentString];
 
 如果你需要比较复杂的多行文本样式, 还是老老实实的自己写UILabel. 或者使用[开源的代替方案](https://github.com/TTTAttributedLabel/TTTAttributedLabel).
