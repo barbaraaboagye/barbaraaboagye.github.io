@@ -13,10 +13,12 @@ header-img: "img/objc-dynamic-magic.jpg"
 ## 基础结构
 首先我们要了解下NSObject类的结构。在NSObject.h中可以看到NSObject的定义。
 
+    {% highlight objective-c linenos %}
     @interface NSObject <NSObject> {
        Class isa;
     } 
     typedef struct objc_class *Class;
+    {% endhighlight %}
 可以看出NSObject只有一个成员变量isa，而Class是一个指向objc_class的指针。换句话说，NSObject对象就是指向objc class定义的指针。
 而objc_class的定义如下：
 

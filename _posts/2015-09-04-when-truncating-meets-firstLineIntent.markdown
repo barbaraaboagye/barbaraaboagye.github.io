@@ -3,7 +3,7 @@ layout:     post
 title:      "When Truncating meets firstLineIndent."
 subtitle:   "Success is not built on success. It's built on failure. It's built on frustration. Sometimes its built on catastrophe."
 date:       2015-09-04 15:58:00
-author:     "Nickolas Hu"
+author:     "Nickolas"
 header-img: "img/post-bg-05.jpg"
 ---
 
