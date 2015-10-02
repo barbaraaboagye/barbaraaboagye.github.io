@@ -19,9 +19,11 @@ header-img: "img/objc-dynamic-magic.jpg"
     } 
     typedef struct objc_class *Class;
     {% endhighlight %}
+
 可以看出NSObject只有一个成员变量isa，而Class是一个指向objc_class的指针。换句话说，NSObject对象就是指向objc class定义的指针。
 而objc_class的定义如下：
 
+    {% highlight objective-c linenos %}
     struct objc_class {
         Class isa;
         Class super_class;
@@ -34,6 +36,7 @@ header-img: "img/objc-dynamic-magic.jpg"
         struct objc_cache *cache;                   
         struct objc_protocol_list *protocols;
     };
+    {% endhighlight %}
 objc_class的定义可以在[apple运行时开源代码](http://www.opensource.apple.com/source/objc4/objc4-208/runtime/objc-class.h)中看到。这里我们看到objc class定义了运行时需要的所有信息，其中包括，指向父类定义的指针，支持哪些protocols，成员方法以及成员变量。
 
 其中比较有趣的是objc_class的第一个变量也是一个Class对象，前部分的内存布局和NSObject一样，这意味着Class类型本身也是一个对象，所有objc对象的操作同样适用于objc Class，比如发送消息对于Class和对象是一致的。这样增加了一致性，减少了区分Class和对象的特殊逻辑。
@@ -62,12 +65,15 @@ Objective-c classobject关系可以参照下图。
 
 继续来看objc_msgSend()方法，它是一个varargs函数，除了前两个参数以外，剩下的都是函数原有的参数。在objc运行时库中可以看到它的定义。
 
+    {% highlight objective-c linenos %}
     id objc_msgSend(id receiver, SEL name, arguments...)
      {
         IMP function = class_getMethodImplementation(receiver->isa, name);
         return function(arguments);
      }
     IMP class_getMethodImplementation(Class cls, SEL name);
+    {% endhighlight %}
+    
 理论上这个方法就是这样，因为编译过程中会做各种性能的优化。在objc的运行时中有个方法叫做class_getMethodImplementation()，它可以通过查照class的函数表，找到指定的selector然后返回。这样得到了一个IMP，而IMP实际上就是一个函数指针，可以像C方法一样调用。因此，objc_msgSend()做的就是获取消息接收者的class object通过isa指针，并且找到selector对应的IMP。这样我们就做到了消息发送，实际上没什么black magic。
 
 ## Dynamic & Reflective 动态性和反射
