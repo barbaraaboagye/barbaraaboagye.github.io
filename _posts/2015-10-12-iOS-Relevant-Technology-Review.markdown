@@ -11,7 +11,7 @@ header-img: "img/post-bg-03.jpg"
 
 SPDY的目标是降低页面加载时间。通过实现prioritizing和multiplexing页面资源的传输，一个client只需要一个连接。TLS加密在SPDY实现中几乎无处不在，传输头做了gzip或DEFLATE压缩(相对于HTTP，HTTP头是明文传输)。此外，服务端可以示意或者主动push而不是等待每个资源的请求。
 
-SPDY依赖SSL/TLS，不支持直接操作TCP。对于SSL的要求是出于安全以及避免通过代理对话的不一致问题。[1][[1]]
+SPDY依赖SSL/TLS，不支持直接操作TCP。对于SSL的要求是出于安全以及避免通过代理对话的不一致问题。[[1]]
 
 
 ###相对于HTTP
