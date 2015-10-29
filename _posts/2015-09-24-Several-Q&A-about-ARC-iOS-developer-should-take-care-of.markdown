@@ -1,7 +1,7 @@
 ---
 layout:     post
 title:      "Several Q&A about ARC iOS developer should take care of."
-subtitle:   "There are no two words in the English language more harmful than "good job"."
+subtitle:   "There are no two words in the English language more harmful than good job."
 date:       2014-08-24 12:00:00
 author:     "Nickolas Hu"
 header-img: "img/post-bg-04.jpg"
