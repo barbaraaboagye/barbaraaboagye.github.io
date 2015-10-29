@@ -31,7 +31,9 @@ SPDY实际上是HTTP和HTTPS协议的通道。当通过SPDY请求时，HTTP请�
 SPDY师徒保留HTTP现有的语义。所有的特性例如cookies，ETags，Vary headers，Content-Encoding 协商等工作同HTTP一样，SPDY只是替换了写入数据到网络的方式。[[3]]
 
 ###相对于http/2
-比较http/2 http1.1-14 SPDY. HTTP/2在HTTP头压缩上效果最好, 因为使用了针对性优化的HPACK 协议. Response Size上面SPDY会更小, 因为SPDY会为了安全做数据填充.[[4]]
+http/2是基于SPDY的基础上制定出来的, 并做了一些改进. 比较http/2 http1.1-14 SPDY三个协议, HTTP/2在HTTP头压缩上效果最好, 因为使用了针对性优化的HPACK 协议. Response Size上面SPDY会更小, 因为SPDY会为了安全做数据填充.[[4]] 
+
+###iOS上如何使用SPDY
 
 [1]:  http://en.wikipedia.org/wiki/SPDY#Design
 [2]:  http://en.wikipedia.org/wiki/SPDY#Relation_to_HTTP
