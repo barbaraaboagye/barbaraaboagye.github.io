@@ -15,7 +15,7 @@ ARC是"Automatic Reference Counting"的缩写,是内存管理的一种方式. LL
 apple工程师很善于通过编译期来做优化, 降低运行时的开销(Swift).
 
 #### What ARC does not do?
-ARC不是什么高级的AI魔法, 在内存模型上, ARC和MRC/plain code是一样的, 实际上每一个.o文件都可以设置是否使用arc, (XCode4以上默认开启, 可以设置每个.m的compiler flag="-fno-objc-arc"关闭ARC). 这也说明了ARC是在compile时期做的, 在linking时可以混用. 不过Apple的工程师通过非常优秀的编译期Clang(也叫做LLVM), 降低了自动retain release带来的次数, 使得遍出来的代码和人工RC差异不大.[1][]  
+ARC不是什么高级的AI魔法, 在内存模型上, ARC和MRC/plain code是一样的, 实际上每一个.o文件都可以设置是否使用arc, (XCode4以上默认开启, 可以设置每个.m的compiler flag="-fno-objc-arc"关闭ARC). 这也说明了ARC是在compile时期做的, 在linking时可以混用. 不过Apple的工程师通过非常优秀的编译期Clang(也叫做LLVM), 降低了自动retain release带来的次数, 使得遍出来的代码和人工RC差异不大.[1](http://arstechnica.com/apple/2011/07/mac-os-x-10-7/10/#arc)
 ARC不会处理非NSObject的对象, 也就是说plain值, core foundion object不能通过ARC管理内存, ARC是依赖NSObject实现的.
 
 
