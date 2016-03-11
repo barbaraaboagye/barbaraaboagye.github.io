@@ -19,9 +19,9 @@ React Native 通过执行javascript, 计算出布局 样式 事件处理的信�
 
 在组件开发和复用方面, ReactNative 采用了 RequireJS 对组件的组织方式. RequireJS 在 node 中广泛使用, 同 npm 结合让组件的重用变得简单. 一个文件就是一个组件, 组件可以发布到 npm 仓库, 通过配置描述组件名称和版本, 其他开发可以直接引用现有的组件. 同 cocoapods 和 maven 类似, 解决了 js 代码依赖管理和协作的问题.
 
-在组件开发上面, UI 开发方式上面沿用了 React 的优秀设计,  React.js 在 javascript 界掀起了一场热潮, 将 面向DOM 的开发方式变为以面向组件的开发. 这倒是和 native 的开发模式很像, 先设计静态组件样式, 再处理交互流程, 抽离可变状态. 但是 React 加上 javascript 的编程能力是 Java 和 OC 不能比的... React 利用 Babel 支持了 ES6的语法, 并为了简化 DOM 的编写设计了 JSX, 这些大大简化了开发量, 并使得开发变得有趣. React 也采用了依赖反转的设计, DOM 重绘, 组件的生命周期, 都是由React.js控制, 开发只需要关心UI 和交互设计, 可以参考 iOS 中的各种生命周期的 delegate 理解.
+在组件开发上面, UI 开发方式上面沿用了 React 的优秀设计,  React.js 在 javascript 界掀起了一场热潮, 将 面向DOM 的开发方式变为以面向组件的开发. 这倒是和 native 的开发模式很像, 先设计静态组件样式, 再处理交互流程, 抽离可变状态. 但是 React 加上 javascript 的编程能力是 Java 和 OC 不能比的... React 利用 Babel 支持了 ES6的语法, 并为了简化 DOM 的编写设计了 JSX, 这些大大简化了开发量, 并使得开发变得有趣. RN 采用依赖倒置的设计, 实现了 DOM 和组件的生命周期管理, 隐藏具体的周期, 暴露几个核心的接口, 这样开发只需要关心UI 和交互设计, 类似于 iOS 中的各种生命周期的 delegate 设计.
 
-Native和javascript的通信是通过native调用javascript实现的, 调用只能是单向的, 总是从native到js. 这套机制目前已经比较成熟,  但RN通过实现对象传递和batch处理js回调的方式解决了双向通信和性能的问题, 对于开发者就像能够做到双向的调用一样. 在 Native 部分, RN 提供了 javascirpt 和 Native 通信时对象传递的方案, 并通过单向调用返回注册callback的方式, 让native在恰当的时机回调js方法, 并且通过让Native 组件运行在独立线程的方式和batch调用callback的方式优化整体的性能. 
+Native和javascript的通信是通过native调用javascript实现的, 调用只能是单向的, 总是从native到js. 这套机制目前已经比较成熟,  但RN通过实现对象传递和batch处理js回调的方式解决了双向通信和性能的问题, 对于开发者就像能够做到双向的调用一样. 在 Native 部分, RN 提供了 javascirpt 和 Native 通信时对象传递的方案, 并通过单向调用返回注册callback的方式, 让native在恰当的时机回调js方法, 并且通过让Native 组件运行在独立线程的方式和batch调用callback的方式优化整体的性能.
 
 RN 官方提供了很多 Native 的组件, 并且由于其开放性, 网上有很多 react-parts 这些开源的组件库, 开发者可以用他们做出精细的交互设计.
 
@@ -41,5 +41,3 @@ http://ariya.ofilabs.com/2012/06/nitro-javascriptcore-and-jit.html
 http://jlongster.com/Removing-User-Interface-Complexity,-or-Why-React-is-Awesome
 https://news.ycombinator.com/item?id=8964935
 http://tadeuzagallo.com/blog/react-native-bridge/
-
-
