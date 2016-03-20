@@ -14,9 +14,9 @@ React Native是javascript和native混合编程的一套框架, 是由facebook开
 
 ## 正文
 
-![performance log](https://raw.githubusercontent.com/NickolasHu/NickolasHu.github.io/master/img/rn-execution.png "Performance Log")
-
 从RN运行的Performance记录, 可以看到一次RN执行的几个主要环节. 获取js -> 执行js -> 初始化nativeModule -> 配置nativeModule. 从`RCTPerformanceLogger.h`中可以看到几个环节的定义, 可以通过跟踪这几个定义看到整个过程.
+
+![performance log](https://raw.githubusercontent.com/NickolasHu/NickolasHu.github.io/master/img/rn-execution.png "Performance Log")
 
 ### 1 获取js
 
