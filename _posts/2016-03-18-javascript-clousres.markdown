@@ -3,7 +3,7 @@ layout:     post
 title:      "Understand javascript clousres."
 subtitle:   "It always seems impossible until it's done."
 date:       2016-03-18 20:25:00
-author:     "Morris & Community"
+author:     "Nickolas"
 header-img: "img/hot-air-balloons-1253229.jpg"
 ---
 
