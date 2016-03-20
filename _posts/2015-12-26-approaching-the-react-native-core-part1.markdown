@@ -1,6 +1,6 @@
 ---
 layout:     post
-title:      "Approaching the React Native Core (1) ---- "
+title:      "Approaching the React Native Core (1) ---- from javascript to native view."
 subtitle:   ""
 date:       2015-12-26 16:15:15
 author:     "Nickolas Hu"
@@ -20,7 +20,7 @@ React Native是javascript和native混合编程的一套框架, 是由facebook开
 
 ### 1 获取js
 
-第一次加载时(和修改js后), js文件会在node server上编译完成, 编译的过程主要是使用babel interpreter生成一个JSC能够执行的文件. `RCTJavaScriptLoader`完成了这个文件的加载. 简化后的代码如下, 支持从本地和http服务两种方式获取js.
+第一次加载时(和修改js后), js文件会在node server上编译完成, 编译的过程主要是使用babel interpreter生成一个JSC能够执行的文件. 获取的过程就是通过外部传入的url请求获取js文件. 实现在`RCTJavaScriptLoader`文件中, 简化后的代码如下, 支持从本地和http服务两种方式获取js.
 
     {% highlight objective-c linenos %}
     // 从scriptURL获取js脚本, 支持从本地加载资源和http资源两种, 通过URL schema区分.
@@ -51,7 +51,7 @@ React Native是javascript和native混合编程的一套框架, 是由facebook开
 
 ### 2 执行js
 
-这部分是RN的核心流程, 比较复杂. 介绍执行之前需要了解下ios是如何调用js的. iOS7以后, Apple推出了JavaScriptCore framework, 封装了[WebKit的js引擎](http://trac.webkit.org/wiki/JavaScriptCore), 提供了iOS上执行js的能力. JSC上有几个关键概念.
+这部分是RN的核心流程. 介绍执行之前需要了解下ios是如何调用js的. iOS7以后, Apple推出了JavaScriptCore framework, 封装了[WebKit的js引擎](http://trac.webkit.org/wiki/JavaScriptCore), 提供了iOS上执行js的能力. JSC上有几个关键概念.
 
 * JSVirtualMachine
 * JSContext
@@ -64,12 +64,18 @@ React Native是javascript和native混合编程的一套框架, 是由facebook开
 
 好了, 看看怎么做的执行部分. 概括来讲, 首先会执行前面拿到的js, 执行完会发出一个`RCTJavaScriptDidLoadNotification`消息. 接着会调用js的`@"AppRegistry.runApplication"`方法, 这个方法会返回一个结果给到native, native根据这个结果做渲染.下面详细看看各个过程.
 
-1 执行js 调用栈如下
+#### 1 执行js 调用栈如下
 | `RCTContextExecutor` `executeApplicationScript:sourceURL:onComplete:` 执行js代码
 | -- | `enqueueApplicationScript:url:onComplete`
 | -- | -- | `RCTBatchedBridge` `executeSourceCode:`
 
-RN的js的执行是在`RCTContextExecutor`中做的, 方法如下. 
+RN的js的执行是在`RCTContextExecutor`中做的, 方法如下. RN中执行js的操作都是在一个独立的javascript线程中处理的. 后面也可以看到, RN中有3个主要的线程.
+
+* com.facebook.React.JavaScript js代码运行的线程
+* com.apple.main-thread 主线程, 所有UIKit相关处理
+* com.facebook.React.ShadowQueue 布局相关处理
+
+因此在监控性能的时候, RN中除了主线程的fps, 还可以看到JavaScript线程的fps, 这两部分都会影响整体的性能情况.
 
     {% highlight objective-c linenos %}
     // 简化过的执行方法 RCTContextExecutor
@@ -80,9 +86,6 @@ RN的js的执行是在`RCTContextExecutor`中做的, 方法如下.
         __weak RCTContextExecutor *weakSelf = self;
         [self executeBlockOnJavaScriptQueue:^{
             RCTContextExecutor *strongSelf = weakSelf;
-            if (!strongSelf || !strongSelf.isValid) {
-              return;
-            }
     
             // JSStringCreateWithUTF8CString expects a null terminated C string
             NSMutableData *nullTerminatedScript = [NSMutableData dataWithCapacity:script.length + 1];
@@ -104,8 +107,9 @@ RN的js的执行是在`RCTContextExecutor`中做的, 方法如下.
     }
     {% endhighlight %}
 
-2 发消息 通知js 启动
+2 执行完成后通知js app启动
 
+调用栈大致如下, 省略了中间几个方法. 
 | `RCTBatchedBridge` `executeSourceCode:` 发送完成消息
 |... | 
 | -- | -- | `RCTBatchedBridge` `- (void)enqueueJSCall:args:` 执行`@"AppRegistry.runApplication"`方法
@@ -138,8 +142,6 @@ RN的js的执行是在`RCTContextExecutor`中做的, 方法如下.
       }];
     }
     {% endhighlight %}
-
-
 
 native调用js都是通过下面这个方法调用的, 调用`method`方法, 返回JSON对象(如果有的话).js方法都是是挂在`__fbBatchedBridge`这个module下面的, 因此先获取module, 再获取方法.
 
