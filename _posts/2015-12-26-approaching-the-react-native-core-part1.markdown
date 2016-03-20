@@ -4,7 +4,7 @@ title:      "Approaching the React Native Core (1) ---- from javascript to nativ
 subtitle:   ""
 date:       2015-12-26 16:15:15
 author:     "Nickolas Hu"
-header-img: "img/post-bg-rnfs.jpg"
+header-img: "img/phone-1052023_1920.jpg"
 ---
 
 ## 介绍(闲扯)
@@ -14,7 +14,7 @@ React Native是javascript和native混合编程的一套框架, 是由facebook开
 
 ## 正文
 
-![performance log](img/rn-execution.png "Performance Log")
+![performance log](https://github.com/NickolasHu/NickolasHu.github.io/blob/master/img/rn-execution.png "Performance Log")
 
 从RN运行的Performance记录, 可以看到一次RN执行的几个主要环节. 获取js -> 执行js -> 初始化nativeModule -> 配置nativeModule. 从`RCTPerformanceLogger.h`中可以看到几个环节的定义, 可以通过跟踪这几个定义看到整个过程.
 
@@ -77,7 +77,7 @@ RN的js的执行是在`RCTContextExecutor`中做的, 方法如下. RN中执行js
 
 因此在监控性能的时候, RN中除了主线程的fps, 还可以看到JavaScript线程的fps, 这两部分都会影响整体的性能情况.
 
-    {% highlight objective-c linenos %}
+    {% highlight objective-c %}
     // 简化过的执行方法 RCTContextExecutor
     - (void)executeApplicationScript:(NSData *)script
                            sourceURL:(NSURL *)sourceURL
@@ -122,79 +122,4 @@ RN的js的执行是在`RCTContextExecutor`中做的, 方法如下. RN中执行js
 ## External links
 * Tadeu Zagallo, FB RN团队的开发分享的原理 http://tadeuzagallo.com/blog/react-native-bridge/
 * RN社区翻译的中文文档 http://reactnative.cn/docs/getting-started.html
-* 为什么Browser的响应速度比native慢 http://stackoverflow.com/questions/10731934/why-html-web-ui-response-slower-than-native-ui#
-
-## 回收站
-可以发现执行完成的结果`result`并没有返回, 看堆栈上调用这个方法的, 是一个`RCTBridge`对象, 在执行完成后做了一次`flushQueue`操作.
-
-    {% highlight objective-c linenos %}
-    - (void)enqueueApplicationScript:(NSData *)script
-                                 url:(NSURL *)url
-                          onComplete:(RCTJavaScriptCompleteBlock)onComplete
-    {    
-      // 上面的js的执行方法
-      [_javaScriptExecutor executeApplicationScript:script sourceURL:url onComplete:^(NSError *scriptLoadError) {
-        [_javaScriptExecutor flushedQueue:^(id json, NSError *error)
-         {
-           [self handleBuffer:json batchEnded:YES];
-           onComplete(error);
-         }];
-      }];
-    }
-    {% endhighlight %}
-
-native调用js都是通过下面这个方法调用的, 调用`method`方法, 返回JSON对象(如果有的话).js方法都是是挂在`__fbBatchedBridge`这个module下面的, 因此先获取module, 再获取方法.
-
-    {% highlight objective-c linenos %}
-    - (void)_executeJSCall:(NSString *)method
-                 arguments:(NSArray *)arguments
-                  callback:(RCTJavaScriptCallback)onComplete
-    {
-      __weak RCTContextExecutor *weakSelf = self;
-      [self executeBlockOnJavaScriptQueue:^{
-        RCTContextExecutor *strongSelf = weakSelf;
-        NSError *error;
-        NSString *argsString = (arguments.count == 1) ? RCTJSONStringify(arguments[0], &error) : RCTJSONStringify(arguments, &error);
-
-        JSValueRef errorJSRef = NULL;
-        JSValueRef resultJSRef = NULL;
-        JSGlobalContextRef contextJSRef = JSContextGetGlobalContext(strongSelf->_context.ctx);
-        JSObjectRef globalObjectJSRef = JSContextGetGlobalObject(strongSelf->_context.ctx);
-
-        // 1 get the BatchedBridge object
-        JSStringRef moduleNameJSStringRef = JSStringCreateWithUTF8CString("__fbBatchedBridge");
-        JSValueRef moduleJSRef = JSObjectGetProperty(contextJSRef, globalObjectJSRef, moduleNameJSStringRef, &errorJSRef);
-        JSStringRelease(moduleNameJSStringRef);
-
-        if (moduleJSRef != NULL && errorJSRef == NULL && !JSValueIsUndefined(contextJSRef, moduleJSRef)) {
-
-          // 2 从BatchedBridge获取方法的引用
-          JSStringRef methodNameJSStringRef = JSStringCreateWithCFString((__bridge CFStringRef)method);
-          JSValueRef methodJSRef = JSObjectGetProperty(contextJSRef, (JSObjectRef)moduleJSRef, methodNameJSStringRef, &errorJSRef);
-          JSStringRelease(methodNameJSStringRef);
-
-          // 3 调用js函数
-          // 这里省略了多参数的处理逻辑, 感兴趣的朋友看代码吧
-          resultJSRef = JSObjectCallAsFunction(contextJSRef, (JSObjectRef)methodJSRef, (JSObjectRef)moduleJSRef, 0, NULL, &errorJSRef);
-        }
-
-        // 4 序列化返回值
-        id objcValue;
-        if (!JSValueIsNull(contextJSRef, resultJSRef)) {
-          JSStringRef jsJSONString = JSValueCreateJSONString(contextJSRef, resultJSRef, 0, nil);
-          if (jsJSONString) {
-            NSString *objcJSONString = (__bridge_transfer NSString *)JSStringCopyCFString(kCFAllocatorDefault, jsJSONString);
-            JSStringRelease(jsJSONString);
-
-            // string -> JSON
-            objcValue = RCTJSONParse(objcJSONString, NULL);
-          }
-        }
-        // objcValue就是js的返回值, 一个json对象
-        onComplete(objcValue, nil);
-      }];
-    }
-    {% endhighlight %}
-
-
-(`RCTBatchedBridge`的`executeSourceCode:`方法中) 发app加载完成消息
+* 为什么Browser的响应速度比native慢 http://stackoverflow.com/questions/10731934/why-html-web-ui-response-slower-than-native-ui

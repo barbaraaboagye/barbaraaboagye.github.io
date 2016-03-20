@@ -16,7 +16,7 @@ header-img: "img/objc-dynamic-magic.jpg"
     {% highlight objective-c linenos %}
     @interface NSObject <NSObject> {
        Class isa;
-    } 
+    }
     typedef struct objc_class *Class;
     {% endhighlight %}
 
@@ -54,7 +54,7 @@ Objective-c classobject关系可以参照下图。
 
 还有一点有意思的，当我们调用class对象的class方法时，[ClassA class]，实际上是等同于调用[ClassA self]，而不是返回其isa对象，这是违反meta schema，这是apple的设计人员在实践中对meta理论做出的妥协，隐藏了meta class，使得整个设计更实用而不是那么的meta。
 
-## 消息机制 
+## 消息机制
 以上就是objc的对象布局，下面看下消息机制。由于objc是基于c的，当我们在@implementation...@end中间实现函数的时候，编译器其实会把函数转换成c函数。转换的方式就是会增加两个额外的参数，self和_cmd，同时去掉“[]-”这些字符。这样objc方法就变成了c方法，如果我们有办法拿到对应的函数指针，我们可以直接用c的方式去调用。
 
 在objc的术语中，实际的c的函数被叫做IMP。c方法其实在objc中是存在的，如果你nm一个objc的dylib，可以看到_开头的c方法。那么[]的objc函数是如何执行的呢？
@@ -73,7 +73,7 @@ Objective-c classobject关系可以参照下图。
      }
     IMP class_getMethodImplementation(Class cls, SEL name);
     {% endhighlight %}
-    
+
 理论上这个方法就是这样，因为编译过程中会做各种性能的优化。在objc的运行时中有个方法叫做class_getMethodImplementation()，它可以通过查照class的函数表，找到指定的selector然后返回。这样得到了一个IMP，而IMP实际上就是一个函数指针，可以像C方法一样调用。因此，objc_msgSend()做的就是获取消息接收者的class object通过isa指针，并且找到selector对应的IMP。这样我们就做到了消息发送，实际上没什么black magic。
 
 ## Dynamic & Reflective 动态性和反射
@@ -84,7 +84,7 @@ objc的内存模型和消息机制使得class object包含了类方法的所有�
 这个特性使得objc同其他动态语言和脚本语言的动态性一样强，如Perl，Ruby，Python，PHP，Javascript等，而objc的不同是会编译为native code。（性能比JIT engines要强），并且获得了与其他脚本语言一样的动态性。相比之下，C++几乎没有introspection能力（除了RTTI）和dynamism。而Java具有反射和动态性，但是没有类似于-forwardInvocation:方法。
 
 That's all.
-    
+
 ## Reference && Further Reading
 - [understanding objective c runtime](http://cocoasamurai.blogspot.com/2010/01/understanding-objective-c-runtime.html)
 - [10 ios questions](http://onevcat.com/2013/04/ios-interview/)
