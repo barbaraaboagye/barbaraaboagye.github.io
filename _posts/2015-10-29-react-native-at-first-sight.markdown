@@ -35,9 +35,9 @@ loadtime问题, 由于RN是以javascript为主体的设计, 页面渲染需要�
 虽然存在这些问题, 但动态能力对于native开发而言的诱惑太大, native开发还是需要根据要解决的问题选择合适的技术. 对于js开发而言, 使用自己熟悉的环境能够大幅提升在客户端的体验, 是非常棒的技术.
 
 ## Reference
-https://facebook.github.io/react-native/
-http://trac.webkit.org/wiki/JavaScriptCore
-http://ariya.ofilabs.com/2012/06/nitro-javascriptcore-and-jit.html
-http://jlongster.com/Removing-User-Interface-Complexity,-or-Why-React-is-Awesome
-https://news.ycombinator.com/item?id=8964935
-http://tadeuzagallo.com/blog/react-native-bridge/
+https://facebook.github.io/react-native/  
+http://trac.webkit.org/wiki/JavaScriptCore  
+http://ariya.ofilabs.com/2012/06/nitro-javascriptcore-and-jit.html  
+http://jlongster.com/Removing-User-Interface-Complexity,-or-Why-React-is-Awesome  
+https://news.ycombinator.com/item?id=8964935  
+http://tadeuzagallo.com/blog/react-native-bridge/  
