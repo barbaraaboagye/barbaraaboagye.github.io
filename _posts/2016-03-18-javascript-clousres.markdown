@@ -124,6 +124,10 @@ sayAlice()();
 * I think normally a closure is the term for both the function along with the variables that are captured. Note that I do not use that definition in this article!
 
 
+http://dmitryfrank.com/articles/js_closures 
+
+
+
 Notes:  
 The original article is from [stackoverflow.com](http://stackoverflow.com/questions/111102/how-do-javascript-closures-work), written by Morris and community (cc-wiki-license). I have taken some good parts. I will add more information about how clousres works later. 
 
