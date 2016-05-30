@@ -65,9 +65,11 @@ React Native是javascript和native混合编程的一套框架, 是由facebook开
 好了, 看看怎么做的执行部分. 概括来讲, 首先会执行前面拿到的js, 执行完会发出一个`RCTJavaScriptDidLoadNotification`消息. 接着会调用js的`@"AppRegistry.runApplication"`方法, 这个方法会返回一个结果给到native, native根据这个结果做渲染.下面详细看看各个过程.
 
 #### 1 执行js 调用栈如下
-| `RCTContextExecutor` `executeApplicationScript:sourceURL:onComplete:` 执行js代码
-| -- | `enqueueApplicationScript:url:onComplete`
-| -- | -- | `RCTBatchedBridge` `executeSourceCode:`
+| `RCTContextExecutor` `executeApplicationScript:sourceURL:onComplete:` 执行js代码  
+| -- | `enqueueApplicationScript:url:onComplete`  
+| -- | -- | `RCTBatchedBridge` `executeSourceCode:`  
+
+Note:如果断点包含的`RCTProfileBlock`没生效, 可以将RCTProfileBlock去掉, 直接调用block.
 
 RN的js的执行是在`RCTContextExecutor`中做的, 方法如下. RN中执行js的操作都是在一个独立的javascript线程中处理的. 后面也可以看到, RN中有3个主要的线程.
 
@@ -109,10 +111,12 @@ RN的js的执行是在`RCTContextExecutor`中做的, 方法如下. RN中执行js
 
 2 执行完成后通知js app启动
 
-调用栈大致如下, 省略了中间几个方法.
-| `RCTBatchedBridge` `executeSourceCode:` 发送完成消息
-|... |
-| -- | -- | `RCTBatchedBridge` `- (void)enqueueJSCall:args:` 执行`@"AppRegistry.runApplication"`方法
+通过追踪`RCTJavaScriptDidLoadNotification`消息, 可以找到第一次执行完js后的工作. 调用栈大致如下, 省略了中间几个方法.  
+| `RCTBatchedBridge` `executeSourceCode:` 发送完成消息  
+|... |  
+| -- | -- | `RCTBatchedBridge` `- (void)enqueueJSCall:args:` 执行`@"AppRegistry.runApplication"`方法  
+
+`[bridge enqueueJSCall:@"AppRegistry.runApplication" args:@[moduleName, appParameters]];` 就是调用了AppRegistry.js的runApplication方法, 并带了模块名和参数. 可以[通过Chrome的调试工具](http://reactnative.cn/docs/0.23/debugging.html#content)追踪js调用过程.
 
 3 返回结果的格式
 在 _executeJSCall的 `@"AppRegistry.runApplication"`方法时断点可以获取返回值
