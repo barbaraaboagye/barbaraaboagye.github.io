@@ -1,7 +1,7 @@
 ---
 layout:     post
 title:      "React Native Changed the World? or Nothing."
-subtitle:   
+subtitle:   “We convince ourselves, and that allows us to convince others.”
 date:       2016-05-30 10:08:00
 author:     "Nickolas"
 header-img: "img/RN-or-not.jpg"
