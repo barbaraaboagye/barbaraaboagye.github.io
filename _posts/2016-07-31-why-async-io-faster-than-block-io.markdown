@@ -4,7 +4,7 @@ title:      "Why async io faster than block io?"
 subtitle:   ""
 date:       2016-07-31 23:54:00
 author:     "Nickolas"
-header-img: "img/RN-or-not.jpg"
+header-img: "img/speed.jpg"
 ---
 
 最近在看node.js, 介绍中提到node是异步io的方式实现, 性能比同步阻塞io的更好. 对于一个request而言, 如果我们依赖io的结果, 异步io和同步阻塞io都是要等到io完成才能继续执行. 而同步阻塞io, 一旦阻塞就不会在获得cpu时间片, 那么为什么异步的性能更好呢?

@@ -4,7 +4,7 @@ title:      "Influence"
 subtitle:   “You should be mindful of what you have influence over, and what you don’t, and only focus on the things you can change.”
 date:       2016-05-30 10:08:00
 author:     "Nickolas"
-header-img: "img/RN-or-not.jpg"
+header-img: "img/influence.jpg"
 ---
 
 随着工作时间和年龄的增长, 越来越意识到影响力的重要性. 如果你还没有意识到, 希望本文能带给你收获.
