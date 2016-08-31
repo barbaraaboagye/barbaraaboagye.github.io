@@ -1,7 +1,7 @@
 ---
 layout:     post
 title:      "user growth using deeplink."
-subtitle:   "If you lose, don't lose the lesson."
+subtitle:   “If you lose, don't lose the lesson.“
 date:       2016-08-30 19:46:00
 author:     "Nickolas"
 header-img: "img/dl.jpg"
