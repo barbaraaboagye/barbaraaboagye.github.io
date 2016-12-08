@@ -4,7 +4,7 @@ title:      "User Growth Using Deeplink Part 2 -- Reserved Deeplink"
 subtitle:   “Progress lies not in enhancing what is, but in advancing toward what will be.”
 date:       2016-12-09 00:05:44
 author:     "Nickolas"
-header-img: "img/dl.jpg"
+header-img: "img/dl2.jpg"
 ---
 
 接着上面一篇文章, [user growth using deeplink](http://nickolashu.github.io/2016/08/30/deeplink-universal-link/) .
@@ -59,6 +59,8 @@ iOS的这个解决方案有几个问题, 首先是需要iOS9及以上, 这样才
 
 这里有两点要说明一下.  
 一个是如何判断app是否安装, 这里有个trick. 其实在跳转的时候可以直接按照universal的链接跳转, 当用户安装app的时候会被拦截到app内部, 而未安装的时候会发请求到后台, 而后台会将这个请求302到对应的appstore链接, 客户端会再次发起appstore的链接并universal到appstore的指定页面. 因此再未安装的时候对于用户而言, 看到的就是直接跳转到了appstore的对应页面.  
+
+
 再一点, 可以将整套方案做成通用化, universal link的域名和后台做成通用服务, 同时支持多个app的多个deeplink. 可以把universal link通过同一个url做转发, 而真正的链接编码后放在参数里. 例如, universal.com/dl?link=tmall.com . 这样可以通过控制link的参数, universal到不同的域名和链接.   
 App的entitlement只要添加了universal.com做拦截, 拦截后解析link参数再跳转到对应的域名下面, 新增域名客户端无需发布.  
 同样, 多个app可以共用一套后台, 让后台的一个apple-app-site-association文件支持多个app, 提高后台的使用效率.  
