@@ -2,7 +2,7 @@
 layout:     post
 title:      "User Growth Using Deeplink Part 2 -- Reserved Deeplink"
 subtitle:   “Progress lies not in enhancing what is, but in advancing toward what will be.”
-date:       2016-09-28 21:01:16
+date:       2016-12-09 00:05:44
 author:     "Nickolas"
 header-img: "img/dl.jpg"
 ---
@@ -13,7 +13,7 @@ Reserved Deeplink是拉新的重要手段, 让用户安装完客户端后恢复�
 不同于deeplink, 需要app已经安装在用户的手机上. 而reserved deeplink能够引导用户下载app并还原之前的上下文.  
 故名思议, 将deeplink的时机延迟到app安装之后进行. 用一张图解释reserved deeplink(copyright branch.io).  
 
-![reserved deeplink](img/deeplink.jpg)
+![reserved deeplink](http://nickolashu.github.io/img/deeplink.jpg)
 
 # Android 动态打包技术
 
@@ -27,7 +27,7 @@ Android的开发同学知道, Android的安装程序使用的是APK(Android appl
 iOS上面由于应用分发渠道等限制, 技术方案会稍复杂. ios9之后[SFSafariViewController](https://developer.apple.com/reference/safariservices/sfsafariviewcontroller)和Safari共享cookie, 可以通过cookie做上下文关联. 在用户点击deeplink url时, 后台把context写入cookie, 再redirect到AppStore.
 在用户安装完成, 打开app后, native上打开一个用户不可见的SFSafraiViewController, 去请求后台. 由于share cookie机制, 后台可以在这次请求中拿到之前写入cookie的数据, 解析出来返回给app. App上再做相应跳转, 即完成了reserved deeplink. 这个流程见下图.
 
-![reserved deeplink ios](img/reserved-deeplink.png)
+![reserved deeplink ios](http://nickolashu.github.io/img/reserved-deeplink.png)
 
 iOS的这个解决方案有几个问题, 首先是需要iOS9及以上, 这样才能使用SFVC;
 其次用户使用的浏览器需要是Safari, 这样才能利于shared cookie机制;
@@ -49,10 +49,18 @@ iOS的这个解决方案有几个问题, 首先是需要iOS9及以上, 这样才
 
 使用device fingerprint技术作为shared cookie的一种补充方案, 在后台匹配不到shared cookie时计算fingerprint做匹配, 在之前的方案中增加几个环节. 如下图所示:
 
-![reserved deeplink ios](img/reserved-deeplink-2.png)
+![reserved deeplink ios](http://nickolashu.github.io/img/reserved-deeplink-2.png)
 
 # iOS上deeplink整合方案
 
-看到这里, 应该对deeplink和reserved deeplink有所了解了. 可以把几种方案整合在一起, 首先将universal link的服务做成通用服务, 一个domain下面可以支持多个deeplink, 多个app. 要做到这点可以将deeplink连接编码后拼接到url中, deeplink成功后, app中做解析跳转.
+看到这里, 应该对deeplink和reserved deeplink有所了解了. 可以把几种方案整合在一起.
 
-![full link](img/full-link.png)
+![full link](http://nickolashu.github.io/img/full-link.png)
+
+这里有两点要说明一下.  
+一个是如何判断app是否安装, 这里有个trick. 其实在跳转的时候可以直接按照universal的链接跳转, 当用户安装app的时候会被拦截到app内部, 而未安装的时候会发请求到后台, 而后台会将这个请求302到对应的appstore链接, 客户端会再次发起appstore的链接并universal到appstore的指定页面. 因此再未安装的时候对于用户而言, 看到的就是直接跳转到了appstore的对应页面.  
+再一点, 可以将整套方案做成通用化, universal link的域名和后台做成通用服务, 同时支持多个app的多个deeplink. 可以把universal link通过同一个url做转发, 而真正的链接编码后放在参数里. 例如, universal.com/dl?link=tmall.com . 这样可以通过控制link的参数, universal到不同的域名和链接.   
+App的entitlement只要添加了universal.com做拦截, 拦截后解析link参数再跳转到对应的域名下面, 新增域名客户端无需发布.  
+同样, 多个app可以共用一套后台, 让后台的一个apple-app-site-association文件支持多个app, 提高后台的使用效率.  
+
+以上的内容在天猫客户端中都实际操作过, 切实可行. 其中部分灵感是通过分析Instagram得到的.
