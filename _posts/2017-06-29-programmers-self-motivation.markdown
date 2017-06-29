@@ -4,7 +4,7 @@ title:      Programmer’s Self Motivation.
 subtitle:   “Striving for excellence motivates you; striving for perfection is demoralizing.”
 date:       2017-06-29 20:38:14
 author:     "Nickolas"
-header-img: "img/post-motivation.jpg”
+header-img: “img/post-motivation.jpg”
 ---
 
 半年多没有更新博客, 一方面是因为懒惰, 另一方面是”过高地追求”自己的写作质量. 由于技术的背景, 经常会看到很多高质量的文章, 因此也要求自己的产出能够达到那个水平, 而本身的写作能力和思考习惯是需要不断练习和培养的, 也就掉到了一个恶性循环中. 
