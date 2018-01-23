@@ -4,7 +4,7 @@ title:      May the Force Be With You.
 subtitle:   “Do not fear to be eccentric in opinion, for every opinion now accepted was once eccentric.” -- Bertrand Russell
 date:       2018-01-14 13:05:14
 author:     "Nickolas"
-header-img: "img/post-motivation.jpg"
+header-img: "https://i.loli.net/2018/01/23/5a67325819cd8.jpeg"
 ---
 
 小的时候会怕死, 死了之后什么都没有了, 对我而言生前一切的东西都变成了虚无. 不过正因为人会死亡, 我们才会思考生命的价值. 而我们更多的是没有闲暇去想. 我们会用各种东西来填充生命中的空闲时间, 玩游戏, 看电视节目, 和朋友聚会或是看书. 叔本华说"生命是一团欲望, 欲望不能满足便痛苦, 满足便无聊, 人生就是在痛苦和无聊之间摇摆". 而大多数人辛苦工作, 赚钱生计换来的片刻的闲暇的时间, 是应该更加珍惜的.
