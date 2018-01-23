@@ -1,7 +1,7 @@
 ---
 layout:     post
 title:      May the Force Be With You.
-subtitle:   
+subtitle:   “Do not fear to be eccentric in opinion, for every opinion now accepted was once eccentric.” -- Bertrand Russell
 date:       2018-01-14 13:05:14
 author:     "Nickolas"
 header-img: "img/post-motivation.jpg"
