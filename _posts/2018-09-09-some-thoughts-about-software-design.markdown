@@ -4,7 +4,7 @@ title:      Some thoughts about software design.
 subtitle:   “Do one thing every day that scares you.” -- Eleanor Roosevelt
 date:       2018-09-09 14:50:14
 author:     "Nickolas"
-header-img: "img/post-motivation.jpg"
+header-img: "img/black-and-white-man-model-25759.jpg"
 ---
 
 # 导言
@@ -13,7 +13,7 @@ header-img: "img/post-motivation.jpg"
 
 这里并不是想说设计模式那些具体的方法, 而是想从自身的经验出发, 反思自己做过的好的不好的选择, 总结自己软件设计的一些方法论. 这些方法不会适用于所有的问题, 但重要的是保持这种思考的习惯, 并形成自己的一套经验体系.
 
-#架构设计--避免过早优化, 避免过度设计
+# 架构设计--避免过早优化, 避免过度设计
 
 软件产品的一个特点是变化, 业务产品要适应不断变化的市场, 技术产品要适应新的技术环境和不断扩展的技术人员的认知. 面对未来的变化, 很容易拖累技术人员的是未来可能的功能, 未来可能的市场规模, 未来可能的性能瓶颈. 产品的未来是很难预估的, 那些未来的功能不仅可能没有, 还会成为现实的拖累.
 
@@ -37,7 +37,7 @@ header-img: "img/post-motivation.jpg"
 
 无论是业务产品还是技术产品, 他的发展都是有周期性的[3][3]. 而每个阶段所需要解决的关键问题不一样. 因此, 要认清产品所在的阶段, 解决关键的问题. 
 
-![product lifecycle](img/marketing-product-lifecycle-overview.jpg) 
+![product lifecycle](http://nickolashu.github.io/img/marketing-product-lifecycle-overview.jpg) 
 
 在产品刚未完全被市场认可时, 这个阶段要解决产品的生存问题, 产品的方向是否能解决用户的需求. 技术产品也是一样, 没有一定用户的技术产品很快会消亡. 因此这个阶段抓住种子用户很关键, 需要持续的接收种子用户的输入, 做出真正能解决实际问题的产品.
 
@@ -47,7 +47,10 @@ header-img: "img/post-motivation.jpg"
 
 
 
-#延伸阅读
+# 延伸阅读
+1: https://medium.com/@george3d6/stop-future-proofing-software-c984cbd65e78
+2: https://dev.mysql.com/doc/refman/5.6/en/innodb-introduction.html
+3: https://www.tutor2u.net/business/reference/product-life-cycle
 
 [1]: https://medium.com/@george3d6/stop-future-proofing-software-c984cbd65e78
 [2]: https://dev.mysql.com/doc/refman/5.6/en/innodb-introduction.html
