@@ -2,7 +2,7 @@
 layout:     post
 title:      Think in develop.
 subtitle:   “If you want to have a great future you have to start thinking about it in the present, because when the future's here you won't have the time” -- Nathan Myhrvold
-date:       2022-01-29 11:49:00
+date:       2022-02-06
 author:     "Nickolas"
 header-img: "img/essense.jpg"
 ---
