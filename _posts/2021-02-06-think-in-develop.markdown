@@ -1,13 +1,13 @@
 ---
 layout:     post
-title:      Think in develop.
+title:      Some Thoughts about Technology.
 subtitle:   “If you want to have a great future you have to start thinking about it in the present, because when the future's here you won't have the time” -- Nathan Myhrvold
 date:       2022-02-06
 author:     "Nickolas"
 header-img: "img/essense.jpg"
 ---
 最近读了*王慧文清华产品课*, 里面有很多关于产品和战略的思考, 给了我很多启发. 一个是要系统化体系化的思考. 比如战略, 从市场体量, 规模效应, 马太效应, 市场集中度, 产业链, 先发后发, 存量增量, 高频低频等维度, 可以非常立体的理解一个行业. 理解和运用PMF,创新的扩散, STP, 4P系统化的理论. 第二是要理解过去的关键事件, 包括成功的失败的, 尤其是那些就快成功的失败, 将事件运用系统化方式思考, 同时完善体系. 比如Nokia和iPhone, IBM Oracle和PC, 从中理解大公司的局限性(参考:创新者的窘境); Walmart和Amazon的发展, 理解定价和渠道策略. 第三, 关注正在发生的一些现象, 理解现象背后的基本面变化. 重要的可能不是现象本身, 而是背后的社会和基本环境变化, 以及带来的新的机会.  
-王慧文的总结基本把我之前在阿里看到的很多高层的分享都涵盖了, 可以说是非常精华的商业思考, 可以沿着每个线索深入探究. 而这偏文章希望站在技术的角度, 沿用体系化, 经典事件, 新的现象的方式看如何理解技术, 以及技术和技术人员如何发展. 准备分两篇, 第一篇聊聊如何理解技术, 技术判断的认知要素.
+王慧文的总结基本把我之前在阿里看到的很多高层的分享都涵盖了, 可以说是非常精华的商业思考, 可以沿着每个线索深入探究. 而这篇文章希望站在技术的角度, 沿用体系化, 经典事件, 新的现象的方式看如何理解技术, 以及技术和技术人员如何发展. 准备分两篇, 第一篇聊聊如何理解技术, 技术判断的认知要素.
 # 什么是技术
 要理解技术, 要理解相关的几个概念, Technology Develop Architecture. Technology是指特定知识或理论在实践和产业中的应用(the application of scientific knowledge for practical purposes, especially in industry). Develop指使产品发展并且变得更成熟 先进 精细(grow or cause to grow and become more mature, advanced, or elaborate).  Architecture指建筑/软件设计和构建的艺术或实践(the art or practice of designing and constructing buildings).
 
