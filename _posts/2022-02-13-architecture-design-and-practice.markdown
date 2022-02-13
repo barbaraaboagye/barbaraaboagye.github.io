@@ -1,6 +1,6 @@
 ---
 layout:     post
-title:      Architecture design and practice. 
+title:      Architecture design and practice analysis. 
 subtitle:   “Form ever follows function.” -- Louis H. Sullivan 1896
 date:       2022-02-13
 author:     "Nickolas"
@@ -28,11 +28,7 @@ header-img: "img/black-and-white-man-model-25759.jpg"
 
 1. 价值分析(Why). 为谁而做, 解决什么问题(business value/issues), ROI如何.  价值分析决定了要不要做, 什么时间做, 投入多少资源.
 
-   
-
 2. 问题定义(What). 事情在全局/上一个层次中的位置怎样, 是一个点的问题还是方向的问题, 长期的technical strategy是什么, 目标/产出是什么. 这部分还是在一个抽象层次上帮助理解问题, 确定目标.
-
-   
 
 3. 挑战分析&架构设计(How). 针对业务的目前, 发展诉求和约束, 做可扩展的架构设计. 同时考虑需要做到什么程度, 如何评估做的好坏.
 
@@ -42,19 +38,27 @@ header-img: "img/black-and-white-man-model-25759.jpg"
 
 1. 架构原则: (From 阿里王晶昱)
    * 服务化架构
+   
    * 去中心化，线性扩展: HSF(Dubbo) + DRDS
      * 去中心化: 系统无单点, 系统中所有角色可单独扩缩
      * 服务能力，随着资源加入，微服务级线性的性能和容量扩展
+     
    * 异步化，最终一致
      * 流程异步化, 去锁, 并行
      * 系统应用尽量无状态化
      * 确保系统最终一致
+     
    * 使用成熟组件: **越下层的系统，越需要稳定**
      * 长期实际生产环境中证明过的可靠成熟组件
      * 用户量翻倍，系统构建难度也会翻倍
+     
    * 自动化, 高可靠
      * 数据化监控运维. 系统运行状态, 异常可观测.
+     
      * 任何节点和链路故障情况，能够自动检测, 高效处理
+     
+       
+   
 2. DDD 领域驱动设计 [Martin Fowler](https://martinfowler.com/)
    * Domain是系统一个划分方式. 能够让系统演进更清晰.
    * 是不是一定要DDD, 导购的领域? 大数据系统的领域?
@@ -110,9 +114,9 @@ header-img: "img/black-and-white-man-model-25759.jpg"
 
     * 冷热分离. 在线和历史库存对事务以及数据量要求不同, 使用不同的存储方案, [在线MySQL, 历史HBase](https://developer.aliyun.com/article/757221).
 
-    * 库存高并发. 1) 读缓存. 本地缓存+集中式缓存降低高并发读, 数据库事务保障数据一致性. 2) 热点商品识别和优化.  3) 使用队列对商品做顺序写. 有几种选择, 单机队列(类似于微信红包的设计), 分布式队列, MySQL队列. 4) MySQL事务优化 5)离线任务对账. 具体参照[君山的文章](https://cloud.tencent.com/developer/article/1497306).
+    * 库存高并发. 1) 读缓存. 本地缓存+集中式缓存降低高并发读, 数据库事务保障数据一致性. 2) 热点商品识别和优化.  3) 使用队列对商品做顺序写. 有几种选择, 单机队列(类似于微信红包的设计), 分布式队列, MySQL队列. 4) MySQL事务优化 5)离线任务对账. 具体参照[君山的文章](https://www.toutiao.com/i6260281405876470273/?hmsr=toutiao.io&utm_medium=toutiao.io&utm_source=toutiao.io&wid=1644746473876).
 
-      ![img](https://ask.qcloudimg.com/http-save/yehe-1569778/ggb265bf0s.jpeg?imageView2/2/w/1620)
+      ![img](https://p6.toutiaoimg.com/origin/33f0001674c419fdbe4?from=pc)
 
   
 
