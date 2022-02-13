@@ -36,9 +36,10 @@ header-img: "img/essense.jpg"
 
 ## 二 架构理论
 
-1. 架构原则: (From 阿里王晶昱)
+1. ### 架构原则: (From 阿里王晶昱)
+
    * 服务化架构
-   
+
    * 去中心化，线性扩展: HSF(Dubbo) + DRDS
      * 去中心化: 系统无单点, 系统中所有角色可单独扩缩
      * 服务能力，随着资源加入，微服务级线性的性能和容量扩展
@@ -58,10 +59,16 @@ header-img: "img/essense.jpg"
      * 任何节点和链路故障情况，能够自动检测, 高效处理
      
        
-   
-2. DDD 领域驱动设计 [Martin Fowler](https://martinfowler.com/)
-   * Domain是系统一个划分方式. 能够让系统演进更清晰.
-   * 是不是一定要DDD, 导购的领域? 大数据系统的领域?
+
+2. ### DDD 领域驱动设计
+
+   Quote from [Martin Fowler](https://martinfowler.com/bliki/DomainDrivenDesign.html):
+
+   > Domain-Driven Design is an approach to software development that centers the development on programming a domain model that has a rich understanding of the processes and rules of a domain.  The approach is particularly suited to complex domains, where a lot of often-messy logic needs to be organized.
+
+   * 围绕Domain Model理解和设计系统. 有助于控制复杂系统的大型的复杂度, 同时也会增加新人理解门槛.
+   * DDD是对复杂现实业务的领域抽象, 像导购的领域, 大数据或其他技术系统不适合使用.
+   * 在Domain基础, Java应用可以使用[Presentation Domain Data 分层设计](https://martinfowler.com/bliki/PresentationDomainDataLayering.html) 做为应用分层设计.
 
 ## 三 交易营销架构实践分析
 

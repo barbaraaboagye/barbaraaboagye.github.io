@@ -4,7 +4,7 @@ title:      Think in technology part 2.(Draft)
 subtitle:   “Do one thing every day that scares you.” -- Eleanor Roosevelt
 date:       2022-02-08
 author:     "Nickolas"
-header-img: "img/black-and-white-man-model-25759.jpg"
+header-img: "img/essense.jpg"
 ---
 
 * 搜索
