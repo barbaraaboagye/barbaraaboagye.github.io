@@ -4,7 +4,7 @@ title:      Architecture design and practice analysis.
 subtitle:   “Form ever follows function.” -- Louis H. Sullivan 1896
 date:       2022-02-13
 author:     "Nickolas"
-header-img: "img/black-and-white-man-model-25759.jpg"
+header-img: "img/essense.jpg"
 ---
 
 [前一篇](https://nickolashu.github.io/2022/02/06/think-in-technology/)提到的技术人的职责, 可以总结为以下3点:
