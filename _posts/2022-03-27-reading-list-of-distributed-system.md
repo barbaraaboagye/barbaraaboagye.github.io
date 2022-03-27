@@ -21,7 +21,7 @@ header-img:
 
 ## Consensus Theory
 
-2PC. Gray described 2PC in ["Notes on Database Operating Systems" (1979)](http://research.microsoft.com/~Gray/papers/DBOS.pdf). 在[Consensus Protocols: Two-Phase Commit](https://www.the-paper-trail.org/post/2008-11-27-consensus-protocols-two-phase-commit/)(2008)这篇文章中有更straight forward的介绍. Thought works这篇文章https://martinfowler.com/articles/patterns-of-distributed-systems/two-phase-commit.html(2022)有更新的理解和详细的解释.
+2PC. Gray described 2PC in "Notes on Database Operating Systems" (1979). 在Consensus Protocols: Two-Phase Commit(2008)这篇文章中有更straight forward的介绍. Thought works这篇文章[two-phase-commit](https://martinfowler.com/articles/patterns-of-distributed-systems/two-phase-commit.html)(2022)通过一个分布式kv store作为例子来解释2pc理论.
 
 3PC. [NonBlocking Commit Protocols" (1981)](http://www.cs.cornell.edu/courses/cs614/2004sp/papers/Ske81.pdf)
 
