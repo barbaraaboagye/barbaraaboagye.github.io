@@ -1,3 +1,28 @@
-2pc
+
+Two-phase commit without failures:
+  [time diagram: TC, A, B]
+  TC sends put(), get(), &c RPCs to A, B
+    A and B lock records.
+    Modifications are tentative, on a copy, only installed if commit.
+  TC gets to the end of the transaction.
+  TC sends PREPARE messages to A and B.
+  If A is able to commit,
+    A responds YES.
+    then A is in "prepared" state.
+  otherwise, A responds NO.
+  Same for B.
+  If both A and B say YES, TC sends COMMIT messages to A and B.
+  If either A or B says NO, TC sends ABORT messages.
+  A/B commit if they get a COMMIT message from the TC.
+    I.e. they copy tentative records to the real DB.
+    And release the transaction's locks on their records.
+  A/B acknowledge COMMIT message.
+
+ACID：
 保障原子性，每个节点参与vote，系统要么全部提交，要么全部失败。
-保障持久性，每个节点先持久化事事务，再vote yes，防止节点crash造成事务状态没有持久化。
+voting阶段，每个节点lock the record，试探性的修改，根据结果vote。提交阶段，根据transaction coordinator结果commit或abort变更，并释放锁。
+保障持久性，每个节点先记录状态，再vote yes，防止节点crash造成事务状态没有持久化。
+
+问题：每个节点voting后需要阻塞等待coordinator
+
+https://pdos.csail.mit.edu/6.824/notes/l-2pc.txt
