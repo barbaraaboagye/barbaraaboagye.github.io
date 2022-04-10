@@ -58,7 +58,7 @@ header-img:
 
 在2PC中, 节点提交之后就必须等待TC commit或者abort, 因为每个节点不知道其他节点的状态. 而3PC增加了一轮pre-commit环节, 使得节点可以在等待timeout时, 提前同步状态, 根据状态决定是否abort, 避免了对TC的单点依赖. 
 
-![Screenshot 2022-04-10 at 8.15.13 PM](/Users/nickolashu/Desktop/Screenshot 2022-04-10 at 8.15.13 PM.png)
+![3pc](http://nickolashu.github.io/img/3pc.png)
 
 
 
