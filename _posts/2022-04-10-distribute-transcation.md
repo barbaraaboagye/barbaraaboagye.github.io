@@ -106,11 +106,11 @@ Saga Pattern可以有**Events/Choreography**和**Command/Orchestration**两种�
 
 [MIT 6.824 2PC](https://pdos.csail.mit.edu/6.824/notes/l-2pc.txt)
 
-[saga pattern implement business transactions](https://blog.couchbase.com/saga-pattern-implement-business-transactions-using-microservices-part/)
+[Saga Pattern Implement Business Transactions](https://blog.couchbase.com/saga-pattern-implement-business-transactions-using-microservices-part/)
 
-[limits_of_saga_pattern](https://www.ufried.com/blog/limits_of_saga_pattern/)
+[Limits Of Saga Pattern](https://www.ufried.com/blog/limits_of_saga_pattern/)
 
-[columbia class Lec 17: Agreement in Distributed Systems: Three-phase Commit, Paxos](https://www.cs.columbia.edu/~du/ds/assets/lectures/lecture17.pdf)
+[Columbia Class Lec 17: Agreement in Distributed Systems: Three-phase Commit, Paxos](https://www.cs.columbia.edu/~du/ds/assets/lectures/lecture17.pdf)
 
-[consensus protocols three phase commit](https://www.the-paper-trail.org/post/2008-11-29-consensus-protocols-three-phase-commit/)
+[Consensus Protocols Three Phase Commit](https://www.the-paper-trail.org/post/2008-11-29-consensus-protocols-three-phase-commit/)
 
