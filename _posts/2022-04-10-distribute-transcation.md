@@ -21,21 +21,21 @@ header-img:
 
  2PC算法最早是Gray在"Notes on Database Operating Systems" (1979)中提出来的. 每个独立的Service是一个参与者A, B, 协调者TC负责协调事务的状态. 算法的过程如下: (不考虑System failure)
 
-> TC sends PREPARE messages to A and B.
->     A and B lock records.
->     Modifications are tentative, on a copy, only installed if commit.
->   If A is able to commit,
->   	A responds YES.
->   	then A is in "prepared" state.
->   	otherwise, A responds NO.
->   Same for B.
->   If both A and B say YES, TC sends COMMIT messages to A and B.
->   If either A or B says NO, TC sends ABORT messages.
->   A/B commit if they get a COMMIT message from the TC.
->     I.e. they copy tentative records to the real DB.
->     And release the transaction's locks on their records.
->   A/B acknowledge COMMIT message. 
->   TC gets to the end of the transaction.
+> TC sends PREPARE messages to A and B.  
+>     A and B lock records.  
+>     Modifications are tentative, on a copy, only installed if commit.  
+>   If A is able to commit,  
+>   	A responds YES.  
+>   	then A is in "prepared" state.  
+>   	otherwise, A responds NO.  
+>   Same for B.  
+>   If both A and B say YES, TC sends COMMIT messages to A and B.  
+>   If either A or B says NO, TC sends ABORT messages.  
+>   A/B commit if they get a COMMIT message from the TC.  
+>     I.e. they copy tentative records to the real DB.  
+>     And release the transaction's locks on their records.  
+>   A/B acknowledge COMMIT message.   
+>   TC gets to the end of the transaction.     
 
 ![img](https://miro.medium.com/max/640/0*FBQPiHKMRmrPE_mc.png)
 
@@ -113,3 +113,4 @@ Saga Pattern可以有**Events/Choreography**和**Command/Orchestration**两种�
 [columbia class Lec 17: Agreement in Distributed Systems: Three-phase Commit, Paxos](https://www.cs.columbia.edu/~du/ds/assets/lectures/lecture17.pdf)
 
 [consensus protocols three phase commit](https://www.the-paper-trail.org/post/2008-11-29-consensus-protocols-three-phase-commit/)
+
