@@ -25,17 +25,13 @@ header-img:
 
 [notes](https://nickolashu.github.io/2022/04/10/distribute-transcation/)3PC. [NonBlocking Commit Protocols" (1981)](http://www.cs.cornell.edu/courses/cs614/2004sp/papers/Ske81.pdf)
 
-[notes](https://nickolashu.github.io/2022/04/10/distribute-transcation/) [SAGA Pattern](https://www.cs.cornell.edu/andru/cs711/2002fa/reading/sagas.pdf) - Hector Garcia Molina & Keneth Salem, Princeton University, 1987. Denis在[Saga Pattern | Application Transactions Using Microservices](https://blog.couchbase.com/saga-pattern-implement-business-transactions-using-microservices-part/)这篇文章简明扼要的介绍了Saga Pattern以及2种实现方式.
+[notes](https://nickolashu.github.io/2022/04/10/distribute-transcation/) [SAGA Pattern](https://www.cs.cornell.edu/andru/cs711/2002fa/reading/sagas.pdf) - Hector Garcia Molina & Keneth Salem, Princeton University, 1987. Denis在[Saga Pattern Application Transactions Using Microservices](https://blog.couchbase.com/saga-pattern-implement-business-transactions-using-microservices-part/)这篇文章简明扼要的介绍了Saga Pattern以及2种实现方式.
 
 [Paxos Made Simple](http://research.microsoft.com/en-us/um/people/lamport/pubs/paxos-simple.pdf), a more terse readable Paxos paper by Lamport himself. Shorter and more easier compared to the original.
 
 [Raft Consensus Algorithm](https://raftconsensus.github.io/) An alternative to Paxos for distributed consensus, that is much simpler to understand. Do checkout an [interesting visualization of raft](http://thesecretlivesofdata.com/raft/)
 
 Replicated Log
-
-
-
-https://medium.com/@dongfuye/the-seven-most-classic-solutions-for-distributed-transaction-management-3f915f331e15
 
 ## Partitioned Database System
 
@@ -45,7 +41,7 @@ https://medium.com/@dongfuye/the-seven-most-classic-solutions-for-distributed-tr
 
 [Dynamo: Amazon's Highly Available Key Value Store](http://bnrg.eecs.berkeley.edu/~randy/Courses/CS294.F07/Dynamo.pdf) Paraphrasing @fogus from their [blog](http://blog.fogus.me/2011/09/08/10-technical-papers-every-programmer-should-read-at-least-twice/), it is very rare for a paper describing an active production system to influence the state of active research in any industry; this is one of those seminal distributed systems paper that solves the problem of a highly available and fault tolerant database in an elegant way, later paving the way for systems like Cassandra, and many other AP systems using a consistent hashing.
 
-[FaRM](https://blog.carlosgaldino.com/farm-fast-remote-memory.html) 
+[No compromises: distributed transactions with consistency, availability, and performance](https://pdos.csail.mit.edu/6.824/papers/farm-2015.pdf) [FaRM](https://blog.carlosgaldino.com/farm-fast-remote-memory.html) - main memory distributed computing platform
 
 ## Concurrency Theory
 
