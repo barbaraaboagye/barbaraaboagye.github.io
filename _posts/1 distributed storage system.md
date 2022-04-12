@@ -39,6 +39,11 @@ Frangipani's coherence protocol (simplified):
 
 Redis internals https://redis.io/docs/reference/internals/
 
+Redis event library https://github.com/redis/redis/blob/99ab4236afb210dc118fad892210b9fbb369aa8e/src/ae.c
+
+https://austingwalters.com/io-multiplexing/
+
+
 https://medium.com/opstree-technology/redis-cluster-architecture-replication-sharding-and-failover-86871e783ac0#:~:text=Redis%20Cluster%20is%20an%20active,a%20subset%20of%20those%20slots.
 
 https://aws.amazon.com/redis/
