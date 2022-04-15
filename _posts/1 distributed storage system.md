@@ -37,13 +37,41 @@ Frangipani's coherence protocol (simplified):
 
 2 Redis
 
-Redis internals https://redis.io/docs/reference/internals/
+- Availability
+master replica pattern
+support async(default) and sync replication.
 
+replica PSYNC -> master <Replication ID, offset>
+   查询backlog
+   计算incremental update
+   or 查询不到 full sync
+      background process RDB file
+      buffer commands
+      load RDB file, send all to replica
+
+A replication ID basically marks a given history of the data set. Every time an instance restarts from scratch as a master, or a replica is promoted to master, a new replication ID is generated for this instance.
+
+why a replica promoted to master needs to change its replication ID after a failover: it is possible that the old master is still working as a master because of some network partition: retaining the same replication ID would violate the fact that the same ID and same offset of any two random instances mean they have the same data set.
+
+
+
+https://medium.com/opstree-technology/redis-cluster-architecture-replication-sharding-and-failover-86871e783ac0#:~:text=Redis%20Cluster%20is%20an%20active,a%20subset%20of%20those%20slots
+https://redis.io/docs/manual/replication/
+
+- Consistency
+https://www.allthingsdistributed.com/2021/11/amazon-memorydb-for-redis-speed-consistency.html
+
+- Persistence
+https://redis.io/docs/manual/persistence/
+
+- Performance
+-- IO MultiPlexing - epoll/kqueue
 Redis event library https://github.com/redis/redis/blob/99ab4236afb210dc118fad892210b9fbb369aa8e/src/ae.c
-
 https://austingwalters.com/io-multiplexing/
 
+-- Single Thread
 
-https://medium.com/opstree-technology/redis-cluster-architecture-replication-sharding-and-failover-86871e783ac0#:~:text=Redis%20Cluster%20is%20an%20active,a%20subset%20of%20those%20slots.
+-- Pipelining
+https://redis.io/docs/manual/pipelining/#:~:text=Redis%20is%20a%20TCP%20server,way%2C%20for%20the%20server%20response.
 
 https://aws.amazon.com/redis/
