@@ -55,11 +55,21 @@ why a replica promoted to master needs to change its replication ID after a fail
 
 
 
+Redis Cluster 
+
+Hash Slot: 
+
+Every node is connected to every other node, The client is in theory free to send requests to all the nodes in the cluster, getting redirected if needed.
+
 https://medium.com/opstree-technology/redis-cluster-architecture-replication-sharding-and-failover-86871e783ac0#:~:text=Redis%20Cluster%20is%20an%20active,a%20subset%20of%20those%20slots
 https://redis.io/docs/manual/replication/
 
 - Consistency
-https://www.allthingsdistributed.com/2021/11/amazon-memorydb-for-redis-speed-consistency.html
+  https://www.allthingsdistributed.com/2021/11/amazon-memorydb-for-redis-speed-consistency.html
+
+  Redis Cluster uses asynchronous replication between nodes, and **last failover wins** implicit merge function. This means that the last elected master dataset eventually replaces all the other replicas. There is always a window of time when it is possible to lose writes during partitions. 
+
+  防止split brain: 奇数个master, 每个master两个replica.
 
 - Persistence
 https://redis.io/docs/manual/persistence/
@@ -75,3 +85,5 @@ https://austingwalters.com/io-multiplexing/
 https://redis.io/docs/manual/pipelining/#:~:text=Redis%20is%20a%20TCP%20server,way%2C%20for%20the%20server%20response.
 
 https://aws.amazon.com/redis/
+
+​			`		

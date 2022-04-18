@@ -167,6 +167,4 @@ header-img: "img/essense.jpg"
 1. [大规模分布式存储系统 ](https://book.douban.com/subject/25723658/)
 2. [阿里架构发展2015QCon分享](https://docs.huihoo.com/infoq/qconshanghai/2015/%E5%88%86%E5%B8%83%E5%BC%8F%E7%B3%BB%E7%BB%9F%E8%AE%BE%E8%AE%A1/QCon%E4%B8%8A%E6%B5%B72015-%E6%B7%98%E5%AE%9D%E6%8A%80%E6%9C%AF%E5%8F%91%E5%B1%95%E5%8E%86%E7%A8%8B%E5%92%8C%E6%9E%B6%E6%9E%84%E7%BB%8F%E9%AA%8C%E5%88%86%E4%BA%AB-%E7%8E%8B%E6%99%B6%E6%98%B1%EF%BC%88%E6%B2%88%E8%AF%A2%EF%BC%89.pdf)
 2.  [Martin Fowler](https://martinfowler.com/)
-
-- 
-
+2.  [Revolutionizing Money Movements at Scale with Strong Data Consistency](https://eng.uber.com/money-scale-strong-data/) (TODO)
