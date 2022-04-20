@@ -86,4 +86,7 @@ https://redis.io/docs/manual/pipelining/#:~:text=Redis%20is%20a%20TCP%20server,w
 
 https://aws.amazon.com/redis/
 
-​			`		
+3 Dynamo
+Available. Data is partitioned and replicated using consistent hashing. Gossip based distributed failure detection and membership protocol.
+Consistency. Consistency is facilitated by object versioning, The consistency among replicas during updates is maintained by a quorum-like technique and a decentralized replica synchronization protocol.
+Simplicity. Dynamo is a completely decentralized system with minimal need for manual administration. Storage nodes can be added and removed from Dynamo without requiring any manual partitioning or redistribution.
