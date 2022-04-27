@@ -90,3 +90,5 @@ https://aws.amazon.com/redis/
 Available. Data is partitioned and replicated using consistent hashing. Gossip based distributed failure detection and membership protocol.
 Consistency. Consistency is facilitated by object versioning, The consistency among replicas during updates is maintained by a quorum-like technique and a decentralized replica synchronization protocol.
 Simplicity. Dynamo is a completely decentralized system with minimal need for manual administration. Storage nodes can be added and removed from Dynamo without requiring any manual partitioning or redistribution.
+
+https://www.educative.io/courses/grokking-adv-system-design-intvw/xoEXr9614RB
