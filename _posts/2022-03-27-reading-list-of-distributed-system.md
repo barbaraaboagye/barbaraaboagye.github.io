@@ -53,7 +53,8 @@ Replicated Log
 
 [A High-Speed Load-Balancer Design with Guaranteed Per-Connection-Consistency](https://www.usenix.org/system/files/nsdi20-paper-barbette.pdf) - Barbette et. al., NSDI 2020
 
-
+## Consistency/Lock System
+[The Chubby lock service for loosely-coupled distributed systems](https://static.googleusercontent.com/media/research.google.com/zh-CN//archive/chubby-osdi06.pdf)
 
 ## Other Distributed System
 
