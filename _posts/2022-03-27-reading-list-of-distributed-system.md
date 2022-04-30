@@ -33,13 +33,17 @@ header-img:
 
 Replicated Log
 
-## Partitioned Database System
+## Partitioned Data System
+
+[Dynamo: Amazon's Highly Available Key Value Store](http://bnrg.eecs.berkeley.edu/~randy/Courses/CS294.F07/Dynamo.pdf) Paraphrasing @fogus from their [blog](http://blog.fogus.me/2011/09/08/10-technical-papers-every-programmer-should-read-at-least-twice/), it is very rare for a paper describing an active production system to influence the state of active research in any industry; this is one of those seminal distributed systems paper that solves the problem of a highly available and fault tolerant database in an elegant way, later paving the way for systems like Cassandra, and many other AP systems using a consistent hashing.
+
+[Cassandra - A Decentralized Structured Storage System](https://www.cs.cornell.edu/projects/ladis2009/papers/lakshman-ladis2009.pdf)
+
+[Scaling Memcache at Facebook](https://www.usenix.org/system/files/conference/nsdi13/nsdi13-final170_update.pdf) 
 
 [Spanner: Google’s Globally Distributed Database](http://static.googleusercontent.com/media/research.google.com/en//pubs/archive/39966.pdf)  - Google 2012. https://eng.uber.com/building-ubers-fulfillment-platform/
 
 [Calvin: fast distributed transactions for partitioned database systems](http://cs.yale.edu/homes/thomson/publications/calvin-sigmod12.pdf) - Thomson et al., SIGMOD’12
-
-[Dynamo: Amazon's Highly Available Key Value Store](http://bnrg.eecs.berkeley.edu/~randy/Courses/CS294.F07/Dynamo.pdf) Paraphrasing @fogus from their [blog](http://blog.fogus.me/2011/09/08/10-technical-papers-every-programmer-should-read-at-least-twice/), it is very rare for a paper describing an active production system to influence the state of active research in any industry; this is one of those seminal distributed systems paper that solves the problem of a highly available and fault tolerant database in an elegant way, later paving the way for systems like Cassandra, and many other AP systems using a consistent hashing.
 
 [No compromises: distributed transactions with consistency, availability, and performance](https://pdos.csail.mit.edu/6.824/papers/farm-2015.pdf) [FaRM](https://blog.carlosgaldino.com/farm-fast-remote-memory.html) - main memory distributed computing platform
 
@@ -49,7 +53,8 @@ Replicated Log
 
 [A High-Speed Load-Balancer Design with Guaranteed Per-Connection-Consistency](https://www.usenix.org/system/files/nsdi20-paper-barbette.pdf) - Barbette et. al., NSDI 2020
 
-
+## Consistency/Lock System
+[The Chubby lock service for loosely-coupled distributed systems](https://static.googleusercontent.com/media/research.google.com/zh-CN//archive/chubby-osdi06.pdf)
 
 ## Other Distributed System
 

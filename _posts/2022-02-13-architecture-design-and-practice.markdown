@@ -47,23 +47,18 @@ header-img: "img/essense.jpg"
    阿里架构师王晶昱总结的架构原则. 使用架构原则指导技术选型和架构的完备设计. 
 
    * 服务化架构
-
    * 去中心化，线性扩展: HSF(Dubbo) + DRDS
      * 去中心化: 系统无单点, 系统中所有角色可单独扩缩
      * 服务能力，随着资源加入，微服务以及线性的性能和容量扩展
-     
    * 异步化，最终一致
      * 流程异步化, 去锁, 并行
      * 系统应用尽量无状态化
      * 确保系统最终一致
-     
    * 使用成熟组件: **越下层的系统，越需要稳定**
      * 长期实际生产环境中证明过的可靠成熟组件
      * 用户量翻倍，系统构建难度也会翻倍
-     
    * 自动化, 高可靠
      * 数据化监控运维. 系统运行状态, 异常可观测.
-     
      * 任何节点和链路故障情况，能够自动检测, 高效处理
      
        
@@ -71,7 +66,6 @@ header-img: "img/essense.jpg"
 2. ### DDD 领域驱动设计
 
    Quote from [Martin Fowler](https://martinfowler.com/bliki/DomainDrivenDesign.html):
-
    > Domain-Driven Design is an approach to software development that centers the development on programming a domain model that has a rich understanding of the processes and rules of a domain.  The approach is particularly suited to complex domains, where a lot of often-messy logic needs to be organized.
 
    * 围绕Domain Model理解和设计系统. 有助于控制复杂系统的大型的复杂度, 同时也会增加新人理解门槛.
