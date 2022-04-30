@@ -35,7 +35,7 @@ Replicated Log
 
 ## Partitioned Database System
 
-[Spanner: Google’s Globally Distributed Database](http://static.googleusercontent.com/media/research.google.com/en//pubs/archive/39966.pdf)  - Google 2012
+[Spanner: Google’s Globally Distributed Database](http://static.googleusercontent.com/media/research.google.com/en//pubs/archive/39966.pdf)  - Google 2012. https://eng.uber.com/building-ubers-fulfillment-platform/
 
 [Calvin: fast distributed transactions for partitioned database systems](http://cs.yale.edu/homes/thomson/publications/calvin-sigmod12.pdf) - Thomson et al., SIGMOD’12
 
