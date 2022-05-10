@@ -60,9 +60,9 @@ Frangipani's coherence protocol (simplified):
 Frangipani是一个典型的CP系统, 牺牲可用性, 达到系统的强一致性和缓存的分区. 通过一个Lock Server节点, 实现各个节点对资源的顺序读写, 达到整体的强一致性.
 
 ## 2 Dynamo 去中心化高可用的KV存储
-Dynamo是Amazon设计的去中心化的高可用的Key-Value存储. 在Amazon的场景下, 
+Dynamo是Amazon设计的去中心化的高可用的Key-Value存储. 最初被用来构建购物车, 后面延续到其他的应用场景, 在Amazon的业务场景下, 一个存储架构需要:
 
-1. 大规模, 可靠性. 支持Tens of thousands of servers and network components, 兼容服务的出错异常, 和数据丢失的异常.
+1. 大规模, 可靠性. 支持Tens of thousands of servers and network components, 在这个量级下设备和环境的问题被放大, 作为基础设施需要兼容异常, 简化上层业务.
 2. 扩展性,  highly scalable to support continuous growth. 易于扩展, 切人工运维成本低.
 3. 主键存储. 简化的数据模型, 只支持主key模式的数据存储. 降低RDB带来的额外开销. 
 4. 高性能, 低延迟. 
@@ -92,6 +92,10 @@ waits for R responses before returning the result to the client.
 if all version are the same, success
 else returns all the versions it deems to be causally unrelated
 The divergent versions are then reconciled and the reconciled version superseding the current versions is written back.
+
+总结  
+根据Werner的描述, Dynamo在Amazon内部没有推广使用. 尽管Dynamo的设计很精妙, 但操作运维的复杂度(Operational Complexity)和系统规模带来的理解成本, 让大多数技术人员望而却步. "Developers strongly preferred simplicity to fine-grained control, they voted with their feet and adopted cloud-based AWS solutions, like Amazon S3 and Amazon SimpleDB, over Dynamo".
+后续在数据结构和Cloud Base方向演进, 变成现在的DynamoDB.
 
 
 
@@ -260,3 +264,5 @@ MySQL local timestamp, Spanner global unique timestamp generate.
 ## Reference
 
 [Cache Consistency: Frangipani](https://pdos.csail.mit.edu/6.824/notes/l-frangipani.txt)
+[Amazon DynamoDB](https://www.allthingsdistributed.com/2012/01/amazon-dynamodb.html)D
+[DynamoDB Develop Guide](https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/Introduction.html)
