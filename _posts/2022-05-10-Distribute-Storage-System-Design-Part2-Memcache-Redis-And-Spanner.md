@@ -1,6 +1,6 @@
 ---
 layout:     post
-title:      Distribute Storage System Design Part2 -- Frangipani & Dynamo
+title:      Distribute Storage System Design Part2 -- Memcache Redis And Spanner
 subtitle:   
 date:       2022-05-10
 author:     "Nickolas"
