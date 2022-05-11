@@ -69,7 +69,8 @@ Dynamo是Amazon设计的去中心化的高可用的Key-Value存储. 最初被用
 3. 主键存储. 简化的数据模型, 只支持主key模式的数据存储. 降低RDB带来的额外开销. 
 4. 高性能, 低延迟. 满足购物车查询和修改的延迟要求.
 
-为了满足以上需求,
+在扩展性上, 使用一致性Hash, 
+在高可用(Available)上, 数据
 
 Available. Data is partitioned and replicated using consistent hashing. Gossip based distributed failure detection and membership protocol.
 Consistency. Consistency is facilitated by object versioning, The consistency among replicas during updates is maintained by a quorum-like technique and a decentralized replica synchronization protocol.
