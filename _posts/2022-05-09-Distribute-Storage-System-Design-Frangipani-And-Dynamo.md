@@ -1,6 +1,6 @@
 ---
 layout:     post
-title:      Distribute Storage System Design Part1 -- Frangipani & Dynamo
+title:      Distribute Storage System Design Part1 -- Frangipani And Dynamo
 subtitle:   
 date:       2022-05-09
 author:     "Nickolas"
@@ -71,11 +71,11 @@ Dynamo是Amazon设计的去中心化的高可用的Key-Value存储. 最初被用
 
 为了满足实际需求, 需要解决扩展性, 高可用, 异常处理和异常检测的问题, 问题和方法如下(来着[Dynamo: Amazon’s Highly Available Key-value Store](https://www.allthingsdistributed.com/files/amazon-dynamo-sosp2007.pdf) )
 
-<img src="/Users/nickolashu/Proj/NickolasHu.github.io/img/Dynamo tech and advantage.png" alt="Dynamo tech and advantage" style="zoom:50%;" />
+<img src="http://nickolashu.github.io/img/Dynamo tech and advantage.png" alt="Dynamo tech and advantage" style="zoom:50%;" />
 
 在扩展性上(Partition), 常用的方法是对key做垂直拆分, 使得数据分散到不同的节点上. 拆分的方法, 一种是将查询主键均匀的分散到固定数量的节点上, 手动分配和管理拆分关系的好处是简单和均匀, 缺点是扩展性差, 节点异常处理困难(通常配合Master-Slave或Load Balance做高可用); 另一种方式, 使用一致性Hash, 将key的读写随机分散到各个节点上. 好处是扩展方便, 新增节点只需要相邻节点做数据迁移, 同时降低扩展的运维成本. 缺点是节点随机分配hash空间, 分配不均匀(通过增加vnode节点, 和自适应的调节节点Hash值调节).
 
-<img src="/Users/nickolashu/Proj/NickolasHu.github.io/img/Dynamo consistent hash.png" alt="Dynamo consistent hash" style="zoom:50%;" />
+<img src="http://nickolashu.github.io/img/Dynamo consistent hash.png" alt="Dynamo consistent hash" style="zoom:50%;" />
 
 高可用(Available)方面, 数据会replicate到N个节点上(按照Hash环的顺序分配节点), 读, 写会同时操作W和R个节点(W+R>N, N通常=3),  保障数据不丢. 使用`Vector Clock`这样一个Conflict Free的结构避免了请求锁, 在网络分区发生脑裂时, 可以同时保存多个版本的数据, 在网络恢复时可以尝试合并版本或把多版本返回给调用方, 由调用方解决冲突.
 
