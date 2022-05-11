@@ -69,7 +69,7 @@ Dynamo是Amazon设计的去中心化的高可用的Key-Value存储. 最初被用
 3. 主键存储. 简化的数据模型, 只支持主key模式的数据存储. 降低RDB带来的额外开销. 
 4. 高性能, 低延迟. 满足购物车查询和修改的延迟要求.
 
-为了满足实际需求, 需要解决扩展性, 高可用, 异常处理和异常检测的问题, 问题和方法如下(来着[Dynamo: Amazon’s Highly Available Key-value Store](https://www.allthingsdistributed.com/files/amazon-dynamo-sosp2007.pdf) )
+为了满足实际需求, 需要解决扩展性, 高可用, 异常处理和异常检测的问题, 问题和方法如下(来自[Dynamo: Amazon’s Highly Available Key-value Store](https://www.allthingsdistributed.com/files/amazon-dynamo-sosp2007.pdf) )
 
 <img src="http://nickolashu.github.io/img/Dynamo tech and advantage.png" alt="Dynamo tech and advantage" style="zoom:50%;" />
 
@@ -81,7 +81,7 @@ Dynamo是Amazon设计的去中心化的高可用的Key-Value存储. 最初被用
 
 因此, Dynamo通过保持一个`quorum-like`的技术, 使用多版本的结构, 通过降低一致性, 提升系统高可用.
 
-异常处理方面, 使用`Sloppy Quorum`和`Hinted handoff`提升可用性. 即当节点A异常时, 后续的节点D会暂时代替异常节点接收写请求, 并把临时的写入单独纪录(separate local database), 当节点A恢复时, D会将数据和请求交给A, 当数据转移成功后, 临时数据会被删除.
+异常处理方面, 使用`Sloppy Quorum`和`Hinted handoff`提升可用性. 即当节点A异常时, 后续的节点D会暂时代替异常节点接收写请求, 并把临时的写入单独记录(separate local database), 当节点A恢复时, D会将数据和请求交给A, 当数据转移成功后, 临时数据会被删除.
 
 在异常检测方面, 使用了`Merkle tree`来高效的对比数据的差异. 
 
