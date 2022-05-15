@@ -2,7 +2,7 @@
 layout:     post
 title:      Distribute Storage System Design Part2 -- Memcache Redis And Spanner
 subtitle:   
-date:       2022-05-10
+date:       2022-05-15
 author:     "Nickolas"
 header-img: 
 ---
@@ -10,49 +10,52 @@ header-img:
 ## 1 Memcache 分布式HashTable缓存 (DHT)
 
 Memcache是Facebook在单机版memcached基础上设计的分布式的KV存储.
-
 在Facebook, 对分布式HashTable(DHT)的使用需求:
 
 1) near real-time communication. 
-2) aggregate content on-the-fly from multi sources 
-3) able to access and update popular shared content 
-4) scale to millions qps. 
 
-在读写上, Read-heavy workload and wide fan-out.
+2) aggregate content on-the-fly from multi sources   
+
+3) able to access and update popular shared content   
+
+4) scale to millions qps.   
+
+5) Read-heavy workload and wide fan-out.
 
 Memcache用做数据的缓存, 在设计上有取舍, 降低整体系统的复杂性:
 
 1) 按需的lool-aside cache. Choose to delete cache data instead of update, cause of idempotent. 
-
    look-aside cache的流程如下, 读取时, 先读缓存再读db, cacahe miss写缓存. 更新时, 先写db, 再失效缓存. 失效缓存而不是更新缓存, 避免了concurrent更新缓存带来的时序问题(由db解决).
-
    <img src="http://nickolashu.github.io/img/look-aside cache.png" alt="look-aside cache" style="zoom:50%;" />
 
 2) 各个Memcache服务之间不做通信, 各个Region之间通过数据库做同步. 数据一致性由后端存储(MySQL)保障. (最终一致性). 保持memcache 是stateless的server. 各个实例独立运行, Memcache很容易水平扩展, 增加服务, 不影响现有的节点. 但不能直接做数据的Partition(依赖DB的Partition).
-
    <img src="http://nickolashu.github.io/img/overall architecture.png" alt="overall architecture" style="zoom:50%;" />
 
 此外, Memcache在系统延迟, 异常处理, 缓存冷启, 跨Region一致性优化上, 有很多实践的经验.
 
-降低系统延迟:
+1. 降低系统延迟:
 
-1. 使用batch和并发请求.  通过DAG(DAG represent dependcy of data.)一次获取多个key的数据. Client-Server之间也通过并发请求降低延迟.
+1) 使用batch和并发请求.  通过DAG(DAG represent dependcy of data.)一次获取多个key的数据. Client-Server之间也通过并发请求降低延迟.
 
-2. Client-Server通信优化. 读取请求(get)使用udp降低延迟和负载. put/delete请求使用tcp保证可靠性.
+2) Client-Server通信优化. 读取请求(get)使用udp降低延迟和负载. put/delete请求使用tcp保证可靠性.
+实践经验udp network failure 0.25% (80% late or drop packet), 将网络异常treat as error, 但skip fill memcached, 避免不必要的网络开销.
 
-​	实践经验udp network failure 0.25% (80% late or drop packet), 将网络异常treat as error, 但skip fill memcached, 避免不必要的网络开销.
+3) Incast congestion: 使用sliding window限制incast congestion. 
+发生Incast congestion的原因是, client会并发请求大量的key, response有可能同时到达, 从而把路由器等设备打卦.
 
-3. Incast congestion: 使用sliding window限制incast congestion. 
+2. 使用租约(lease)降低后端负载:
 
-​	发生Incast congestion的原因是, client会并发请求大量的key, response有可能同时到达, 从而把路由器等设备打卦.
+* 当cache miss的时候会生成lease. lease is a 64-bit token bound to the specific key the client originally requested. 
 
-使用租约(lease降低后端负载):
+* stale write: happens when concurrent update to memcache get reordered. 当set value时, 会校验lease.如果key在request到put期间收到了delete reqeust, lease会失效.  
 
-* lease is a 64-bit token bound to the specific key the client originally requested.
-* stale values: happens when concurrent update to memcache get reordered. So when a key is deleted, its value is transfered to a data structure that holds recently deleted items. A get request can return a lease token or data which ic marked as stale.
-* thundering herds: request for a key's value within 10 secounds of a token being issued result in a special notification telling the client to wait a short amount of time. When the client retry the request, the data is often present in the cache.
+  考虑以下场景R1, R2先后两次读取, U1, U2先后两次更新, 分别更新值为A,B, 更新都先于读. 因此R1,R2触发了两次写W1,W2. 如果W2先于W1到达, 则最终值为A. 即为stale write.
 
-Handle failures:
+  带lease的场景, W2由R2触发, lease有效可以更新. W1由R1触发, lease期间有数据更新U2, 因此lease失效, 更新被拒绝. 因此最终值为B.
+
+* 缓存击穿(thundering herds):  token每10秒会生成一个, 在10秒内, client带有lease的请求会被延迟hold一段时间, 这样当请求时, 缓存的数据已经被更新. 从而减少了大量的数据更新时带来的缓存击穿问题.
+
+3. Handle failures:
 
 Dedicate a small set of machines(1%), to take over the responsiblities of a few failed servers, named Gutter.
 
@@ -62,7 +65,7 @@ Regional Invalidation: MySQL commit log - batch deletes to McSqueal - unpack to 
 
 <img src="http://nickolashu.github.io/img/memcache invalidation@2x.png" alt="memcache invalidation@2x" style="zoom:50%;" />
 
-Cold Cluster Warmup: Allow "cold cluster" retrieve data from "warm cluster" rather than a persitent storage.
+4. Cold Cluster Warmup: Allow "cold cluster" retrieve data from "warm cluster" rather than a persitent storage.
 
 ​	Race conditions: cold cluster database update - simultaneously request stale data from warm cluster.
 
@@ -84,7 +87,7 @@ Cold Cluster Warmup: Allow "cold cluster" retrieve data from "warm cluster" rath
 
 ​	Close time: When cold cluster's hit rate stabilizse.
 
-ACross Region Consistency: 
+5. Across Region Consistency: 
 
 ​	Benifits: local memcached server + local MySql provides low latency; avoids reace condition in which an invalidation arrives before the data replicated from the master db region.
 
@@ -92,13 +95,13 @@ ACross Region Consistency:
 
 ​	Solution: provide best-effort eventual consistency. Use `remote marker` to minimize the probability of reading stale data. the marker indicates that data in the local replica database are potentially stale, and the query should be redirected to the master region.
 
-  1. befrore client update key k, set a remote marker in the region
+  1) befrore client update key k, set a remote marker in the region
 
-  2. client perform write to the master db.
+  2) client perform write to the master db.
 
-  3. client deletes k in the local memcache cluster.
+  3) client deletes k in the local memcache cluster.
 
-  4. client get cache miss, check the remote marker of k, decide whether direct query to master/local databese.
+  4) client get cache miss, check the remote marker of k, decide whether direct query to master/local databese.
 
      Trade consistency with speed.
 
