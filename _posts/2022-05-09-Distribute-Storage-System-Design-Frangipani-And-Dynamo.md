@@ -2,7 +2,7 @@
 layout:     post
 title:      Distribute Storage System Design Part1 -- Frangipani And Dynamo
 subtitle:   
-date:       2022-05-09
+date:       2022-05-12
 author:     "Nickolas"
 header-img: 
 ---
@@ -138,6 +138,8 @@ The divergent versions are then reconciled and the reconciled version supersedin
 
 [Cache Consistency: Frangipani](https://pdos.csail.mit.edu/6.824/notes/l-frangipani.txt)
 
-[Amazon DynamoDB](https://www.allthingsdistributed.com/2012/01/amazon-dynamodb.html)[DynamoDB Develop Guide](https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/Introduction.html)
+[Amazon DynamoDB](https://www.allthingsdistributed.com/2012/01/amazon-dynamodb.html)
+
+[DynamoDB Develop Guide](https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/Introduction.html)
 
 [Dynamo: Amazon’s Highly Available Key-value Store](https://www.allthingsdistributed.com/files/amazon-dynamo-sosp2007.pdf) 

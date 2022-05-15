@@ -7,40 +7,50 @@ author:     "Nickolas"
 header-img: 
 ---
 
-## 1 Memcache 分布式HashTable (DHT)
+## 1 Memcache 分布式HashTable缓存 (DHT)
 
-Design needs: 1) ner real-time communication. 2) aggregate content on-the-fly from multi sources 3) able to access and update popular shared content 4) scale to millions qps. 
+Memcache是Facebook在单机版memcached基础上设计的分布式的KV存储.
 
-Read-heavy workload and wide fan-out.
+在Facebook, 对分布式HashTable(DHT)的使用需求:
 
-Design principle: 
+1) near real-time communication. 
+2) aggregate content on-the-fly from multi sources 
+3) able to access and update popular shared content 
+4) scale to millions qps. 
 
-1. demand-filled lool-aside cache. Choose to delete cache data instead of update, cause of idempotent.
+在读写上, Read-heavy workload and wide fan-out.
 
-2. Memecache server do not communicate with each other. Try to embed the complexity of the system into a stateless client rather than in the memcache server.
+Memcache用做数据的缓存, 在设计上有取舍, 降低整体系统的复杂性:
+
+1) 按需的lool-aside cache. Choose to delete cache data instead of update, cause of idempotent. 
+
+   look-aside cache的流程如下, 读取时, 先读缓存再读db, cacahe miss写缓存. 更新时, 先写db, 再失效缓存. 失效缓存而不是更新缓存, 避免了concurrent更新缓存带来的时序问题(由db解决).
 
    <img src="http://nickolashu.github.io/img/look-aside cache.png" alt="look-aside cache" style="zoom:50%;" />
 
-Latency:
+2) 各个Memcache服务之间不做通信, 各个Region之间通过数据库做同步. 数据一致性由后端存储(MySQL)保障. (最终一致性). 保持memcache 是stateless的server. 各个实例独立运行, Memcache很容易水平扩展, 增加服务, 不影响现有的节点. 但不能直接做数据的Partition(依赖DB的Partition).
 
-* Parallel request and batching: DAG represent dependcy of data.
+   <img src="http://nickolashu.github.io/img/overall architecture.png" alt="overall architecture" style="zoom:50%;" />
 
-* Client server communication:
+此外, Memcache在系统延迟, 异常处理, 缓存冷启, 跨Region一致性优化上, 有很多实践的经验.
 
-​	get - udp for reduce latency and overhead - network failure 0.25% (80% late or drop packet) - treat as error - skip fill memcached
+降低系统延迟:
 
-​	put,delete -  tcp for 可靠性
+1. 使用batch和并发请求.  通过DAG(DAG represent dependcy of data.)一次获取多个key的数据. Client-Server之间也通过并发请求降低延迟.
 
-* Incast congestion: sliding window to limit incast congestion. 
+2. Client-Server通信优化. 读取请求(get)使用udp降低延迟和负载. put/delete请求使用tcp保证可靠性.
 
-​	Reason client request large number of keys, response arrive all at same time, response overwhelm rack and cluster switches.
+​	实践经验udp network failure 0.25% (80% late or drop packet), 将网络异常treat as error, 但skip fill memcached, 避免不必要的网络开销.
 
-Reducing load:
+3. Incast congestion: 使用sliding window限制incast congestion. 
 
-* Leases:
-  * lease is a 64-bit token bound to the specific key the client originally requested.
-  * stale values: happens when concurrent update to memcache get reordered. So when a key is deleted, its value is transfered to a data structure that holds recently deleted items. A get request can return a lease token or data which ic marked as stale.
-  * thundering herds: request for a key's value within 10 secounds of a token being issued result in a special notification telling the client to wait a short amount of time. When the client retry the request, the data is often present in the cache.
+​	发生Incast congestion的原因是, client会并发请求大量的key, response有可能同时到达, 从而把路由器等设备打卦.
+
+使用租约(lease降低后端负载):
+
+* lease is a 64-bit token bound to the specific key the client originally requested.
+* stale values: happens when concurrent update to memcache get reordered. So when a key is deleted, its value is transfered to a data structure that holds recently deleted items. A get request can return a lease token or data which ic marked as stale.
+* thundering herds: request for a key's value within 10 secounds of a token being issued result in a special notification telling the client to wait a short amount of time. When the client retry the request, the data is often present in the cache.
 
 Handle failures:
 
@@ -75,10 +85,6 @@ Cold Cluster Warmup: Allow "cold cluster" retrieve data from "warm cluster" rath
 ​	Close time: When cold cluster's hit rate stabilizse.
 
 ACross Region Consistency: 
-
-​	MySQL master - replicas. rely on MySQL replication to keep replica databses up-to-date. 
-
-<img src="http://nickolashu.github.io/img/overall architecture.png" alt="overall architecture" style="zoom:50%;" />
 
 ​	Benifits: local memcached server + local MySql provides low latency; avoids reace condition in which an invalidation arrives before the data replicated from the master db region.
 
@@ -168,3 +174,8 @@ MySQL local timestamp, Spanner global unique timestamp generate.
 
 
 <img src="http://nickolashu.github.io/img/spanner-true-time.png" style="zoom:40%;" />
+
+
+
+## 4 总结
+
