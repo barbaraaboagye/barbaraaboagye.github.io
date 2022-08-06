@@ -1,45 +1,184 @@
-Pattern: 
-If input array is sorted then
-- Binary search
-- Two pointers
+0. Pattern
 
-If asked for all permutations/subsets then
-- Backtracking
+   ```md
+   If input array is sorted then
+   - Binary search
+   - Two pointers
+   
+   If asked for all permutations/subsets then
+   - Backtracking
+   
+   If given a tree then
+   - DFS
+   - BFS
+   
+   If given a graph then
+   - DFS
+   - BFS
+   
+   If given a linked list then
+   - Two pointers
+   
+   If recursion is banned then
+   - Stack
+   
+   If must solve in-place then
+   - Swap corresponding values
+   - Store one or more different values in the same pointer
+   
+   If asked for maximum/minimum subarray/subset/options then
+   - Dynamic programming
+   
+   If asked for top/least K items then
+   - Heap
+   
+   If asked for common strings then
+   - Map
+   - Trie
+   
+   Else
+   - Map/Set for O(1) time & O(n) space
+   - Sort input for O(nlogn) time and O(1) space
+   ```
 
-If given a tree then
-- DFS
-- BFS
+1. **String**
 
-If given a graph then
-- DFS
-- BFS
+* replace `String out = s.replace(a, b);`
+* split `String[] o = s.split(a);` 
+* `length()`
+* `charAt()`
+* `toCharArray()`
+* `substring(start, end)`  `substring(start)`
+* reverse: `new StringBuilder(hi).reverse().toString()`
+* Compare `a.compareTo(b)`   优先字母序, 字母相同 short first.
 
-If given a linked list then
-- Two pointers
+2. **Character**
 
-If recursion is banned then
-- Stack
+3. **Integer** 
 
-If must solve in-place then
-- Swap corresponding values
-- Store one or more different values in the same pointer
+   * `Integer.MIN_VALUE`  `Integer.MAX_VALUE`  10位数字 Long(19位数字)
 
-If asked for maximum/minimum subarray/subset/options then
-- Dynamic programming
+   * `Integer.parseInt()`
 
-If asked for top/least K items then
-- Heap
+     ![image-20220717120742085](/Users/nickolashu/Library/Application Support/typora-user-images/image-20220717120742085.png)
 
-If asked for common strings then
-- Map
-- Trie
+4. **Map**
 
-Else
-- Map/Set for O(1) time & O(n) space
-- Sort input for O(nlogn) time and O(1) space
+- `new Map<>{{ put<k,v>}}`
+- `put` `putIfAbsent`
+- `remove(key)` `remove(key, value)` 
+- `containsKey`
+- `getOrDefault()`
+- `for (k:map.keySet())` `for(v:map.values())`
 
-Pattern Description.
-https://seanprashad.com/leetcode-patterns/
+5. **Set**
 
-Practice.
-https://seanprashad.com/leetcode-patterns/
+* `set.add()`
+
+6. **Deque** 
+
+* `Deque<Character> deque = new ArrayDeque<>();`
+
+* stack: `push` `pop` `peek`
+
+  | **Stack Method**                                             | **Equivalent `Deque` Method**                                |
+  | ------------------------------------------------------------ | ------------------------------------------------------------ |
+  | [`push(e)`](https://docs.oracle.com/javase/8/docs/api/java/util/Deque.html#push-E-) | [`addFirst(e)`](https://docs.oracle.com/javase/8/docs/api/java/util/Deque.html#addFirst-E-) |
+  | [`pop()`](https://docs.oracle.com/javase/8/docs/api/java/util/Deque.html#pop--) | [`removeFirst()`](https://docs.oracle.com/javase/8/docs/api/java/util/Deque.html#removeFirst--) |
+  | [`peek()`](https://docs.oracle.com/javase/8/docs/api/java/util/Deque.html#peek--) | [`peekFirst()`](https://docs.oracle.com/javase/8/docs/api/java/util/Deque.html#peekFirst--) |
+
+* queue: 
+
+  | **`Queue` Method**                                           | **Equivalent `Deque` Method**                                |
+  | ------------------------------------------------------------ | ------------------------------------------------------------ |
+  | [`add(e)`](https://docs.oracle.com/javase/8/docs/api/java/util/Queue.html#add-E-) | [`addLast(e)`](https://docs.oracle.com/javase/8/docs/api/java/util/Deque.html#addLast-E-) |
+  | [`offer(e)`](https://docs.oracle.com/javase/8/docs/api/java/util/Queue.html#offer-E-) | [`offerLast(e)`](https://docs.oracle.com/javase/8/docs/api/java/util/Deque.html#offerLast-E-) |
+  | [`remove()`](https://docs.oracle.com/javase/8/docs/api/java/util/Queue.html#remove--) | [`removeFirst()`](https://docs.oracle.com/javase/8/docs/api/java/util/Deque.html#removeFirst--) |
+  | [`poll()`](https://docs.oracle.com/javase/8/docs/api/java/util/Queue.html#poll--) | [`pollFirst()`](https://docs.oracle.com/javase/8/docs/api/java/util/Deque.html#pollFirst--) |
+  | [`element()`](https://docs.oracle.com/javase/8/docs/api/java/util/Queue.html#element--) | [`getFirst()`](https://docs.oracle.com/javase/8/docs/api/java/util/Deque.html#getFirst--) |
+  | [`peek()`](https://docs.oracle.com/javase/8/docs/api/java/util/Queue.html#peek--) | [`peekFirst()`](https://docs.oracle.com/javase/8/docs/api/java/util/Deque.html#peek--) |
+
+7. **array**
+
+* 初始化`int[] numbers = {1,2};`  `int[] numbers = new int[5];` 
+
+* 长度 `nums.length`
+
+* 填充 `Arrays.fill(array, value)`
+
+* 删除`remove(index)`
+
+* 增加 `add(index, E)`
+
+* 排序 Arrays.sort()
+
+  * 从小到大排序`Arrays.sort(array, (a,b) -> a-b);` 
+
+  * `Arrays.sort(a, Collections.reverseOrder());`
+
+  * Arrays.stream(coins).boxed()
+
+    ​            .sorted(Collections.reverseOrder())
+
+    ​            .mapToInt(Integer::intValue)
+
+    ​            .toArray();
+
+  * `Arrays.sort(array, int fromIndex, int toIndex)`
+
+* 转换 
+
+  * `Arrays.asList()`
+
+
+9. **ArrayList** 
+
+* `isEmpty()`
+
+* 转换为int[] `toArray(T)`
+
+* ​        `int[][] r = new int[people.length][2];`
+
+  ​       `Arrays.setAll(r, result::get);`
+
+* 排序
+
+  * `list.sort(Collections.reverseOrder())` 
+
+  * `list.sort((a,b)->(a-b))`
+
+  * ```java
+    list.sort(months, 
+        (String a, String b) -> { return Integer.signum(a.length() - b.length()); }
+    );
+    ```
+
+  * `compareTo(T o) a negative integer, zero, or a positive integer as this object is less than, equal to, or greater than the specified object.`
+
+
+10. **Math** 
+
+* `Math.max()`
+* `Math.abs()`
+
+9. **PriorityQueue**
+
+   * ```java
+     PriorityQueue<T> pq = new PriorityQueue<T>((a, b) -> a-b);
+     ```
+
+   * `pq.peek()`
+
+   * `pq.poll()`
+
+   * `pq.offer()` `pq.add()`
+
+   * `pq.toArray()`
+
+   * `pq.remove()`
+
+10. **Heap**
+
+* left child `2i+1`
+* right child `2i+2`
+* parent `(i-1)/2`
