@@ -3,34 +3,51 @@ layout: page
 description: "You miss 100% of the shots you don't take - Wayne Gretzky."
 ---
 
-{% for post in paginator.posts %}
-<div class="post-preview">
-    <a href="{{ post.url | prepend: site.baseurl }}">
-        <h2 class="post-title">            {{ post.title }}
-        </h2>
-        {% if post.subtitle %}
-        <h3 class="post-subtitle">
-            {{ post.subtitle }}
-        </h3>
-        {% endif %}
-    </a>
-    <p class="post-meta">Posted by {% if post.author %}{{ post.author }}{% else %}{{ site.title }}{% endif %} on {{ post.date | date: "%B %-d, %Y" }}</p>
+<div class="hero">
+  <h1>Welcome <br> I am Barbara Aboagye! </h1>
+  <p>I am a civil engineer and study abroad expert, with a passion for helping students navigate the process of studying abroad.</p>
 </div>
-<hr>
-{% endfor %}
 
-<!-- Pager -->
-{% if paginator.total_pages > 1 %}
-<ul class="pager">
-    {% if paginator.previous_page %}
-    <li class="previous">
-        <a href="{{ paginator.previous_page_path | prepend: site.baseurl | replace: '//', '/' }}">&larr; Newer Posts</a>
-    </li>
+<div class="featured-content">
+  <h2>Featured Content</h2>
+  <ul>
+    {% for post in site.posts limit:1 %}
+    {% if post.title == "Crafting the Perfect Statement of Purpose" %}
+    <li><a href="{{ post.url }}">{{ post.title }}</a></li>
     {% endif %}
-    {% if paginator.next_page %}
-    <li class="next">
-        <a href="{{ paginator.next_page_path | prepend: site.baseurl | replace: '//', '/' }}">Older Posts &rarr;</a>
-    </li>
-    {% endif %}
-</ul>
-{% endif %}
+  {% endfor %}
+    <li><a href="/research-projects/">Current Research Projects</a></li>
+  </ul>
+</div>
+
+<div class="youtube-video">
+  <h2>Latest YouTube Video</h2>
+  <div id="youtube-video-player"></div>
+</div>
+
+<script>
+  // code to retrieve the latest uploaded video from your YouTube channel 
+  // and to embed the video using the YouTube iframe player
+  function loadLatestVideo() {
+    // Your YouTube API Key
+    const apiKey = 'AIzaSyApYEbvwiRbuLa39ymRo5wSzg5G3AqJ11U';
+    // Your YouTube Channel ID
+    const channelId = 'UCEYKFq7ZEg81GYxpzNqYZ4Q';
+
+    const url = `https://www.googleapis.com/youtube/v3/search?key=${apiKey}&channelId=${channelId}&part=snippet,id&order=date&maxResults=1`;
+
+    fetch(url)
+      .then(response => response.json())
+      .then(data => {
+        // Get the videoId of the latest video
+        const videoId = data.items[0].id.videoId;
+        // Embed the video using the YouTube iframe player
+        const videoPlayer = `<iframe width="560" height="315" src="https://www.youtube.com/embed/${videoId}" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>`;
+        // add the video player to the youtube-video-player div
+        document.getElementById("youtube-video-player").innerHTML = videoPlayer;
+      });
+  }
+  // Call the loadLatestVideo function when the page loads
+  // Call the loadLatestVideo function when the page loads
+  window.onload = loadLatestVideo;
+</script>
