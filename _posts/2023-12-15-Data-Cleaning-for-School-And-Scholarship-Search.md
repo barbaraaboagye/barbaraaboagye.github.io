@@ -9,6 +9,7 @@ header-img:
 
 # 1 Building a School and Scholarship Search App (3SA): Data Pre-processing And Cleaning 
 
+Put introduction and background information
 
 ## Loading the Scholarship Dataset
 
