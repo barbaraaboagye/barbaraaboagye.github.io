@@ -1,13 +1,13 @@
 ---
 layout:     post
-title:     HOW TO BUILD A SCHOOL AND SCHOLARSHIP SEARCH APP (3SA) USING PYTHON AND STREAMLIT (PART 1) : DATA CLEANING AND PREPROCESSING
+title:     HOW TO BUILD A SCHOOL AND SCHOLARSHIP SEARCH APP (3SA) USING PYTHON AND STREAMLIT (PART 1): DATA CLEANING AND PREPROCESSING
 subtitle:   
-date:       2023-11-15
+date:       2023-12-17
 author:     "Barbara Aboagye"
 header-img: 
 ---
 
-# Building a School and Scholarship Search App (3SA): Data Pre-processing And Cleaning 
+# HOW TO BUILD A SCHOOL AND SCHOLARSHIP SEARCH APP (3SA) USING PYTHON AND STREAMLIT (PART 1) : DATA CLEANING AND PREPROCESSING
 
 When it comes to education, academics are often faced with two main challenges : the high cost of education and the overwhelming process of finding suitable schools and scholarships for their specific program. I’ve addressed these issues with the School and Scholarship Search App (3SA) built using Python and Streamlit. 
 
