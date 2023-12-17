@@ -17,27 +17,34 @@ In this article, we will learn the process of cleaning, handling missing data an
 ## Data Preprocessing and cleaning to build 3SA : Process To Follow
 
 Below is the process we can follow : 
-1. Gathering, importing necessary libraries and loading the scholarship data
-    - Import necessary libraried
-    - Load the dataset
+1. Data Collection :
+   - Manual data collection from university websites and social media (Twitter and LinkedIn)
+   
+2. Importing necessary libraries and loading the scholarship data :
+    - Imports necessary Python libraries
+    - Loads the dataset
 
-2. Data Exploration
+2. Data Exploration :
    - Displays the first few rows of the dataset.
    - Retrieves information about the dataset.
 
-3. Data Cleaning - Handling Missing Data:
-   - Identifies missing data in the dataset.
+3. Features Selection 
+   - Identifies the necessary feature
    - Creates a new DataFrame with selected features.
+      
+4. Data Cleaning - Handling Missing Data:
    - Splits certain columns into separate rows.
    - Resets the index for unique labels.
 
-4. Data Cleaning - Handling Missing Data (Continued):
+5. Data Cleaning - Handling Missing Data (Continued):
    - Further identifies missing data in the cleaned dataset.
    - Drops rows with missing 'Name' values.
    - Fills remaining missing values with empty strings.
 
-5. Data Saving:
+6. Data Saving:
    - Saves the cleaned dataset as "scholarship_df.csv."
+
+### Data Collection 
 
 So the process starts with collecting the dataset to be used. The data used in this project was manually collected and the raw dataset can be found and downloaded [here](https://raw.githubusercontent.com/barbaraaboagye/My-MachineLearning-Journey/1e19a3a7caf86f8b0603ed100144ff94d536a769/Projects/Scholarship%20recommender%20system/scholarshipdatabase.csv). 
 
@@ -64,9 +71,9 @@ The libraries used are :
 - `pandas` for data manipulation and DataFrame operations.
 - `matplotlib.pyplot` for data visualization
 
-The dataset has various headings with a number of missing datas as shown above. The next step will be to explore the dataset further
-l
-## Exploring the Data
+The dataset has various headings with a number of missing datas as shown above. The next step will be to explore the dataset further.
+
+### Data Exploration
 Now, let's use the `info()` method to get information about the DataFrame  including data types and the presence of any missing values.
 
 ``` python
@@ -77,7 +84,7 @@ print(df.info())
 
 There are 704 entries with a number of null entries which would be taken care of soon.
 
-### Selecting relevant features
+### Features selection
 
 Out of the 11 columns/features present in the DataFrame, we are only interested in 4. We will therefore create a new DataFrame with only the relevant features. 
 
@@ -91,7 +98,7 @@ data.head()
 
 The new DataFrame `data` now has only 4 columns : Name, Area of specialisation, Country and Level needed.
 
-### Splitting Columns into Separate Rows
+### Data Cleaning : Splitting Columns into Separate Rows
 The selected features : 'Area of specialisation,' 'Country,' and 'Level needed,' contain multiple entries separated by commas. The next step involves splitting these entries into separate rows to make the data more accessible. 
 
 ``` Python
