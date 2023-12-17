@@ -33,6 +33,8 @@ This project required 3 libraries :
 - `matplotlib.pyplot` for
 The necessary libraries are imported and the [scholarship dataset](https://raw.githubusercontent.com/barbaraaboagye/My-MachineLearning-Journey/1e19a3a7caf86f8b0603ed100144ff94d536a769/Projects/Scholarship%20recommender%20system/scholarshipdatabase.csv) is loaded into a Pandas DataFrame using the `read_csv`. The first few rows of the dataset are then displayed as shown in the snapshot below :
 
+
+
 ## Exploring the Data
 ``` python
 # Get information about the dataset
