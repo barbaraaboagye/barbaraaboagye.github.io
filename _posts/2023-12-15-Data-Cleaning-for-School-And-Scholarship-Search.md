@@ -7,7 +7,7 @@ author:     "Barbara Aboagye"
 header-img: 
 ---
 
-# 1 Building a School and Scholarship Search App (3SA): Data Pre-processing And Cleaning 
+# Building a School and Scholarship Search App (3SA): Data Pre-processing And Cleaning 
 
 When it comes to education, academics are often faced with two main challenges : the high cost of education and the overwhelming process of finding suitable schools and scholarships for their specific program. I’ve addressed these issues with the School and Scholarship Search App (3SA) built using Python and Streamlit. 
 
@@ -26,3 +26,5 @@ df = pd.read_csv('scholarshipdatabase.csv')
 
 # Display the first few rows
 df.head()
+```
+Here is a snapshot of the raw dataset
