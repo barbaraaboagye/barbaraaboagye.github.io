@@ -75,7 +75,7 @@ print(df.info())
 ```
 ![](https://github.com/barbaraaboagye/barbaraaboagye.github.io/blob/dbabfe3bc4b66751f6acca4dbc48dfcce439eee6/_posts/images/info.png)
 
-There are 704 entries with
+There are 704 entries with a number of null entries which would be taken care of soon.
 
 ### Selecting relevant features
 
