@@ -18,7 +18,7 @@ In this article, we will learn the process of cleaning, handling missing data an
 
 Below is the process we can follow : 
 1. Data Collection :
-   - Manual data collection from university websites and social media (Twitter and LinkedIn)
+    - Manual data collection from university websites and social media (Twitter and LinkedIn)
    
 2. Importing necessary libraries and loading the scholarship data :
     - Imports necessary Python libraries
@@ -28,16 +28,16 @@ Below is the process we can follow :
    - Displays the first few rows of the dataset.
    - Retrieves information about the dataset.
 
-3. Features Selection 
+3. Features Selection :
    - Identifies the necessary feature
    - Creates a new DataFrame with selected features.
       
-4. Data Cleaning - Handling Missing Data:
+4. Splitting Columns into Separate Rows :
    - Splits certain columns into separate rows.
    - Resets the index for unique labels.
 
-5. Data Cleaning - Handling Missing Data (Continued):
-   - Further identifies missing data in the cleaned dataset.
+5. Handling Missing Data :
+   - Identifies missing data in the cleaned dataset.
    - Drops rows with missing 'Name' values.
    - Fills remaining missing values with empty strings.
 
@@ -98,8 +98,9 @@ data.head()
 
 The new DataFrame `data` now has only 4 columns : Name, Area of specialisation, Country and Level needed.
 
-### Data Cleaning : Splitting Columns into Separate Rows
-The selected features : 'Area of specialisation,' 'Country,' and 'Level needed,' contain multiple entries separated by commas. The next step involves splitting these entries into separate rows to make the data more accessible. 
+### Splitting Columns into Separate Rows
+
+The selected features: 'Area of specialisation,' 'Country,' and 'Level needed,' contain multiple entries separated by commas. The next step involves splitting these entries into separate rows to make the data more accessible. 
 
 ``` Python
 # Split certain columns into separate rows
@@ -119,6 +120,8 @@ data.head()
 ```
 
 This is how the dataset looks like now : 
+
+There are no more multiple entries for the columns. 
 
 ### Handling Missing Data
 
