@@ -34,7 +34,7 @@ This project required 3 libraries :
   
 The necessary libraries are imported and the [scholarship dataset](https://raw.githubusercontent.com/barbaraaboagye/My-MachineLearning-Journey/1e19a3a7caf86f8b0603ed100144ff94d536a769/Projects/Scholarship%20recommender%20system/scholarshipdatabase.csv) is loaded into a Pandas DataFrame using the `read_csv`. The first few rows of the dataset are then displayed as shown in the snapshot below :
 
-[]!(https://github.com/barbaraaboagye/barbaraaboagye.github.io/blob/a22929b7fca24b580f62be82c1afd8b539b3fb69/_posts/images/scholarship%20snapshot.png)
+![](https://github.com/barbaraaboagye/barbaraaboagye.github.io/blob/a22929b7fca24b580f62be82c1afd8b539b3fb69/_posts/images/scholarship%20snapshot.png)
 
 ## Exploring the Data
 ``` python
