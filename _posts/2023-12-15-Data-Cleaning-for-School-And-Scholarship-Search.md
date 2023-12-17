@@ -65,7 +65,7 @@ The libraries used are :
 - `matplotlib.pyplot` for data visualization
 
 The dataset has various headings with a number of missing datas as shown above. The next step will be to explore the dataset further
-
+l
 ## Exploring the Data
 Now, let's use the `info()` method to get information about the DataFrame  including data types and the presence of any missing values.
 
@@ -85,10 +85,15 @@ Out of the 11 columns/features present in the DataFrame, we are only interested 
 # New dataframe with selected features
 features = ['Name', 'Area of specialisation', 'Country', 'Level needed']
 data = df[features]
+data.head()
 ```
+![](https://github.com/barbaraaboagye/barbaraaboagye.github.io/blob/ca7a71275b7e6c24faf594320cf6ca13c87fb5b4/_posts/images/filtered%20dataset.png)
 
-## Splitting Columns into Separate Rows
-Certain columns, like 'Area of specialisation,' 'Country,' and 'Level needed,' contain multiple entries separated by commas. We split these entries into separate rows to make the data more accessible. 
+The new DataFrame `data` now has only 4 columns : Name, Area of specialisation, Country and Level needed.
+
+### Splitting Columns into Separate Rows
+The selected features : 'Area of specialisation,' 'Country,' and 'Level needed,' contain multiple entries separated by commas. The next step involves splitting these entries into separate rows to make the data more accessible. 
+
 ``` Python
 # Split certain columns into separate rows
 data = data.assign(**{'Area of specialisation': data['Area of specialisation'].str.split(', ')})
@@ -107,3 +112,28 @@ data.head()
 ```
 
 This is how the dataset looks like now : 
+
+### Handling Missing Data
+
+Now that our data is organized, we will now identify and address the missing data.
+
+``` Python
+# Further identify missing data
+data.isnull().sum()
+
+# Drop rows with missing 'Name' values
+data.dropna(subset=['Name'], inplace=True)
+
+# Fill remaining missing values with empty strings
+data.fillna('', inplace=True)
+data.isnull().sum()
+```
+
+### Data Saving
+
+Our dataset is now clean and ready to be used to build 3SA. It is saved in a new CSV. 
+
+``` Python
+# Save the cleaned dataset
+data.to_csv('scholarship_df.csv', index=False)
+```
