@@ -32,5 +32,9 @@ This project required 3 libraries :
 - `pandas` for data manipulation and DataFrame operations.
 - `matplotlib.pyplot` for
 - 
-The scholarship dataset is loaded using read_csv from "scholarshipdatabase.csv". The first few rows of the dataset are then displayed.
+The scholarship dataset is loaded into a Pandas DataFrame read_csv from "scholarshipdatabase.csv". The first few rows of the dataset are then displayed as shown in the snapshot below :
 
+``` python
+print(df.info())
+```
+The `info()` method provides a snapshot, including data types and the presence of any missing values.
