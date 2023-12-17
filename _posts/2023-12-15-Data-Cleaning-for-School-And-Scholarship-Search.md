@@ -36,6 +36,7 @@ The necessary libraries are imported and the [scholarship dataset](https://raw.g
 
 ![](https://github.com/barbaraaboagye/barbaraaboagye.github.io/blob/a22929b7fca24b580f62be82c1afd8b539b3fb69/_posts/images/scholarship%20snapshot.png)
 
+The dataset has various headings with a number of missing datas as shown above
 ## Exploring the Data
 ``` python
 # Get information about the dataset
