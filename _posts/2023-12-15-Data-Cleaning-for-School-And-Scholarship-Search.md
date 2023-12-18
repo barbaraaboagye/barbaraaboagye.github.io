@@ -96,7 +96,11 @@ data.head()
 ```
 ![](https://github.com/barbaraaboagye/barbaraaboagye.github.io/blob/ca7a71275b7e6c24faf594320cf6ca13c87fb5b4/_posts/images/filtered%20dataset.png)
 
-The new DataFrame `data` now has only 4 columns : Name, Area of specialisation, Country and Level needed.
+The new DataFrame `data` now has only 4 columns : Name, Area of specialisation, Country and Level needed. Let's check the shape 
+
+``` Python
+data.head()
+```
 
 ### Splitting Columns into Separate Rows
 
