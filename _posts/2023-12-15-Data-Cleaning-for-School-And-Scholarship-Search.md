@@ -126,7 +126,12 @@ data.head()
 
 ![](https://github.com/barbaraaboagye/barbaraaboagye.github.io/blob/22edbc8a4187cf47be5361a44e2c59cac57b4712/_posts/images/cleaned%20dataset.png)
 
-There are no more multiple entries for the columns. 
+There are no more multiple entries for the columns. Let's check the shape.
+
+``` Python
+data.shape
+```
+![](https://github.com/barbaraaboagye/barbaraaboagye.github.io/blob/66397cb5881e6f8f9c6ee2417c668b88b7411b85/_posts/images/cleaned%20dataset%20shape.png)
 
 ### Handling Missing Data
 
