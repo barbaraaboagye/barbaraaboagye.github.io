@@ -126,13 +126,14 @@ data.head()
 
 ![](https://github.com/barbaraaboagye/barbaraaboagye.github.io/blob/22edbc8a4187cf47be5361a44e2c59cac57b4712/_posts/images/cleaned%20dataset.png)
 
-There are no more multiple entries for the columns. Let's check the shape.
+There are no more multiple entries for the columns. Let's check the shape. 
 
 ``` Python
 data.shape
 ```
 ![](https://github.com/barbaraaboagye/barbaraaboagye.github.io/blob/66397cb5881e6f8f9c6ee2417c668b88b7411b85/_posts/images/cleaned%20dataset%20shape.png)
 
+The splitting has resulted in more rows in our DataFrame, changing the shape from (704,4) to (3829,4)
 ### Handling Missing Data
 
 Now that our data is organized, we will now identify and address the missing data.
