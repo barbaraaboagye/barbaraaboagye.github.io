@@ -124,7 +124,7 @@ data.reset_index(drop=True, inplace=True)
 data.head()
 ```
 
-This is how the dataset looks like now : 
+![](https://github.com/barbaraaboagye/barbaraaboagye.github.io/blob/2ccd0ba44870cfbb086a7f8ebb26c62662e3a9fe/_posts/images/filtered%20dataset.png) 
 
 There are no more multiple entries for the columns. 
 
