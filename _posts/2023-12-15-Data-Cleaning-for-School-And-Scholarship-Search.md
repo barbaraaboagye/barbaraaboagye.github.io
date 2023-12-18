@@ -99,8 +99,9 @@ data.head()
 The new DataFrame `data` now has only 4 columns : Name, Area of specialisation, Country and Level needed. Let's check the shape 
 
 ``` Python
-data.head()
+data.shape
 ```
+![](https://github.com/barbaraaboagye/barbaraaboagye.github.io/blob/552426fca6c3657fd9bf0c3ea08a2e467ea2b692/_posts/images/uncleaned%20dataset%20shape.png)
 
 ### Splitting Columns into Separate Rows
 
