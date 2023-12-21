@@ -153,6 +153,7 @@ data.dropna(subset=['Name'], inplace=True)
 data.fillna('', inplace=True)
 data.isnull().sum()
 ```
+![](https://github.com/barbaraaboagye/barbaraaboagye.github.io/blob/d98f46baa50cd15daa61f70925e03e05137677ef/_posts/images/shape%20filtered%20dataset%20after%20filling.png)
 
 ### Data Saving
 
