@@ -85,7 +85,7 @@ print(df.info())
 ```
 ![](https://github.com/barbaraaboagye/barbaraaboagye.github.io/blob/dbabfe3bc4b66751f6acca4dbc48dfcce439eee6/_posts/images/info.png)
 
-There are 704 entries with a number of null entries which would be taken care of soon. The shape of the dataset is (704,11)
+There are 704 entries with several null entries. The shape of the original dataset is (704,11)
 
 ### Features selection
 
@@ -99,7 +99,7 @@ data.head()
 ```
 ![](https://github.com/barbaraaboagye/barbaraaboagye.github.io/blob/ca7a71275b7e6c24faf594320cf6ca13c87fb5b4/_posts/images/filtered%20dataset.png)
 
-The new DataFrame `data` now has only 4 columns : Name, Area of specialisation, Country and Level needed. Let's check the shape 
+The new DataFrame `data` has only 4 features: Name, Area of specialisation, Country and Level needed. Let's check the shape 
 
 ``` Python
 data.shape
@@ -108,7 +108,7 @@ data.shape
 
 ### Splitting Columns into Separate Rows
 
-The selected features: 'Area of specialisation,' 'Country,' and 'Level needed,' contain multiple entries separated by commas. The next step involves splitting these entries into separate rows to make the data more accessible. 
+The selected features: `Area of specialisation`, `Country` and `Level needed` contains multiple entries separated by commas. The next step involves splitting these entries into separate rows to make the data more accessible. 
 
 ``` Python
 # Split certain columns into separate rows
@@ -136,7 +136,8 @@ data.shape
 ```
 ![](https://github.com/barbaraaboagye/barbaraaboagye.github.io/blob/66397cb5881e6f8f9c6ee2417c668b88b7411b85/_posts/images/cleaned%20dataset%20shape.png)
 
-The splitting has resulted in more rows in our DataFrame, changing the shape from (704,4) to (3829,4)
+The splitting has resulted in more rows in our DataFrame, changing the shape from (704,4) to (3829,4).
+
 ### Handling Missing Data
 
 Now that our data is organized, we will now identify and address the missing data.
