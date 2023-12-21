@@ -145,7 +145,10 @@ Now that our data is organized, we will now identify and address the missing dat
 ``` Python
 # Further identify missing data
 data.isnull().sum()
+```
+![](https://github.com/barbaraaboagye/barbaraaboagye.github.io/blob/de0698a2051bc062f4e6941823c1f0924282845d/_posts/images/shape%20filtered%20dataset.png)
 
+``` Python
 # Drop rows with missing 'Name' values
 data.dropna(subset=['Name'], inplace=True)
 
