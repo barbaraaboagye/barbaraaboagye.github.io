@@ -87,7 +87,7 @@ print(df.info())
 
 There are 704 entries with several null entries. The shape of the original dataset is (704,11)
 
-### Features selection
+### 3. Features selection
 
 Out of the 11 columns/features present in the DataFrame, we are only interested in 4. We will therefore create a new DataFrame with only the relevant features. 
 
@@ -106,7 +106,7 @@ data.shape
 ```
 ![](https://github.com/barbaraaboagye/barbaraaboagye.github.io/blob/552426fca6c3657fd9bf0c3ea08a2e467ea2b692/_posts/images/uncleaned%20dataset%20shape.png)
 
-### Splitting Columns into Separate Rows
+### 4. Splitting Columns into Separate Rows
 
 The selected features: `Area of specialisation`, `Country` and `Level needed` contains multiple entries separated by commas. The next step involves splitting these entries into separate rows to make the data more accessible. 
 
@@ -138,7 +138,7 @@ data.shape
 
 The splitting has resulted in more rows in our DataFrame, changing the shape from (704,4) to (3829,4).
 
-### Handling Missing Data
+### 5. Handling Missing Data
 
 Now that our data is organized, we will now identify and address the missing data.
 
@@ -158,7 +158,7 @@ data.isnull().sum()
 ```
 ![](https://github.com/barbaraaboagye/barbaraaboagye.github.io/blob/d98f46baa50cd15daa61f70925e03e05137677ef/_posts/images/shape%20filtered%20dataset%20after%20filling.png)
 
-### Data Saving
+### 6. Data Saving
 
 Our dataset is now clean and ready to be used to build 3SA. It is saved in a new CSV. 
 
@@ -166,3 +166,4 @@ Our dataset is now clean and ready to be used to build 3SA. It is saved in a new
 # Save the cleaned dataset
 data.to_csv('scholarship_df.csv', index=False)
 ```
+You can access the complete python code [here](https://github.com/barbaraaboagye/My-MachineLearning-Journey/blob/31e326d6e5a6ac53e94cd4e9fc3145590a404c52/Projects/Scholarship%20recommender%20system/Data_processing.ipynb).
