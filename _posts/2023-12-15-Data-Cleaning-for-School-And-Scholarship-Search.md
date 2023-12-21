@@ -9,7 +9,7 @@ header-img:
 
 # HOW TO BUILD A SCHOOL AND SCHOLARSHIP SEARCH APP (3SA) USING PYTHON AND STREAMLIT (PART 1): DATA CLEANING AND PREPROCESSING
 
-How many of you have been shocked by how much it costs to go to a University? How many hours have you spent searching for suitable schools and scholarships that match your program of interest and still not found anything? 
+How many of you have been shocked by University tuition cost? How many hours have you spent searching for suitable schools and scholarships that match your program of interest and still not found anything? 
 
 To address these two major issues - the high cost of education and the difficulty of finding program-specific schools and scholarships, - I've built the School and Scholarship Search App (3SA) using Python and Streamlit. 
 
