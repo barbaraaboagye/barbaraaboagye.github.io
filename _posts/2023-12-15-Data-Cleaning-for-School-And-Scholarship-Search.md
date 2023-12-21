@@ -115,7 +115,7 @@ data.shape
 
 The splitting has resulted in more rows in our DataFrame, changing the shape from (704,4) to (3829,4).
 
-### 5. Handling Missing Data
+### 6. Handling Missing Data
 
 Now that our data is organized, we will now identify and address the missing data.
 
@@ -135,7 +135,7 @@ data.isnull().sum()
 ```
 ![](https://github.com/barbaraaboagye/barbaraaboagye.github.io/blob/d98f46baa50cd15daa61f70925e03e05137677ef/_posts/images/shape%20filtered%20dataset%20after%20filling.png)
 
-### 6. Data Saving
+### 7. Data Saving
 
 Our dataset is now clean and ready to be used to build 3SA. It is saved in a new CSV file as "scholarship_df.csv"
 
