@@ -7,18 +7,21 @@ author:     "Barbara Aboagye"
 header-img: 
 ---
 
-# HOW TO BUILD A SCHOOL AND SCHOLARSHIP SEARCH APP (3SA) USING PYTHON AND STREAMLIT (PART 1) : DATA CLEANING AND PREPROCESSING
+# HOW TO BUILD A SCHOOL AND SCHOLARSHIP SEARCH APP (3SA) USING PYTHON AND STREAMLIT (PART 1): DATA CLEANING AND PREPROCESSING
 
-When it comes to education, academics are often faced with two main challenges : the high cost of education and the overwhelming process of finding suitable schools and scholarships for their specific program. I’ve addressed these issues with the School and Scholarship Search App (3SA) built using Python and Streamlit. 
+How many of you have been shocked by how much it costs to go to a University? How many hours have you spent searching for suitable schools and scholarships that match your program of interest and still not found anything? 
 
-This article is divided into two parts: Part 1 covers data cleaning and pre-processing, while Part 2  will look into creating and designing an intuitive user interface.
-In this article, we will learn the process of cleaning, handling missing data and restructuring the dataset  for building 3SA. 
+To address these two major issues - the high cost of education and the difficulty of finding program-specific schools and scholarships, - I've built the School and Scholarship Search App (3SA) using Python and Streamlit. 
+
+This app allows students to find schools that are tailored to their programs with accompanying scholarships, explore country-specific scholarships based on their program of interest, and find scholarships or schools based on their academic level of interest.
+
+In this article, we'll explore the process of building the School and Scholarship Search App (3SA) in two parts: Part 1 focuses on cleaning and pre-processing the data, while Part 2 focuses on creating a user-friendly interface. Specifically, we'll cover cleaning, handling missing data, and restructuring the dataset to build 3SA.
 
 ## Data Preprocessing and cleaning to build 3SA : Process To Follow
 
 Below is the process we can follow : 
 1. Data Collection :
-    - Manual data collection from university websites and social media (Twitter and LinkedIn)
+    - Manually collects data from university websites and social media (Twitter and LinkedIn)
    
 2. Importing necessary libraries and loading the scholarship data :
     - Imports necessary Python libraries
@@ -29,7 +32,7 @@ Below is the process we can follow :
    - Retrieves information about the dataset.
 
 3. Features Selection :
-   - Identifies the necessary feature
+   - Identifies the necessary features
    - Creates a new DataFrame with selected features.
       
 4. Splitting Columns into Separate Rows :
@@ -44,11 +47,11 @@ Below is the process we can follow :
 6. Data Saving:
    - Saves the cleaned dataset as "scholarship_df.csv."
 
-### Data Collection 
+### 1. Data Collection 
 
 So the process starts with collecting the dataset to be used. The data used in this project was manually collected and the raw dataset can be found and downloaded [here](https://raw.githubusercontent.com/barbaraaboagye/My-MachineLearning-Journey/1e19a3a7caf86f8b0603ed100144ff94d536a769/Projects/Scholarship%20recommender%20system/scholarshipdatabase.csv). 
 
-### Importing libraries and loading dataset
+### 2. Importing libraries and loading dataset
 Let's start by importing the necessary libraries and the [dataset](https://raw.githubusercontent.com/barbaraaboagye/My-MachineLearning-Journey/1e19a3a7caf86f8b0603ed100144ff94d536a769/Projects/Scholarship%20recommender%20system/scholarshipdatabase.csv) :
 
 ```python
@@ -56,7 +59,7 @@ Let's start by importing the necessary libraries and the [dataset](https://raw.g
 
 import numpy as np
 import pandas as pd
-import matplotlib.pyplot as plt
+
 
 # Load dataset
 df = pd.read_csv('scholarshipdatabase.csv')
@@ -66,12 +69,12 @@ df.head()
 ```
 
 ![](https://github.com/barbaraaboagye/barbaraaboagye.github.io/blob/a22929b7fca24b580f62be82c1afd8b539b3fb69/_posts/images/scholarship%20snapshot.png)
+
 The libraries used are : 
 - `numpy` for numerical operations.
 - `pandas` for data manipulation and DataFrame operations.
-- `matplotlib.pyplot` for data visualization
 
-The dataset has various headings with a number of missing datas as shown above. The next step will be to explore the dataset further.
+The dataset has various headings with several missing data as shown above. The next step will be to explore the dataset further.
 
 ### Data Exploration
 Now, let's use the `info()` method to get information about the DataFrame  including data types and the presence of any missing values.
