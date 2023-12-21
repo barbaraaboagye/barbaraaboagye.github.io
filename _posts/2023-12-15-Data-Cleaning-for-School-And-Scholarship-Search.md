@@ -27,7 +27,11 @@ The first step is collecting the dataset. The data used in this project was manu
 
 ### 2. Importing libraries and loading dataset
 
-Let's start by importing the necessary libraries and the [dataset](https://raw.githubusercontent.com/barbaraaboagye/My-MachineLearning-Journey/1e19a3a7caf86f8b0603ed100144ff94d536a769/Projects/Scholarship%20recommender%20system/scholarshipdatabase.csv) :
+Let's start by importing the necessary libraries and the [dataset](https://raw.githubusercontent.com/barbaraaboagye/My-MachineLearning-Journey/1e19a3a7caf86f8b0603ed100144ff94d536a769/Projects/Scholarship%20recommender%20system/scholarshipdatabase.csv). 
+
+The libraries used are : 
+- `numpy` for numerical operations.
+- `pandas` for data manipulation and DataFrame operations
 
 ```python
 #Importing necessary python libraries
@@ -45,9 +49,7 @@ df.head()
 
 ![](https://github.com/barbaraaboagye/barbaraaboagye.github.io/blob/a22929b7fca24b580f62be82c1afd8b539b3fb69/_posts/images/scholarship%20snapshot.png)
 
-The libraries used are : 
-- `numpy` for numerical operations.
-- `pandas` for data manipulation and DataFrame operations.
+.
 
 The dataset has various headings with several missing data as shown above. The next step will be to explore the dataset further.
 
