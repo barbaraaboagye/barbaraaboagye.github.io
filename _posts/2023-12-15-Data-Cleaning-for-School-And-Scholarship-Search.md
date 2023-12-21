@@ -17,41 +17,16 @@ This app allows students to find schools that are tailored to their programs wit
 
 In this article, we'll explore the process of building the School and Scholarship Search App (3SA) in two parts: Part 1 focuses on cleaning and pre-processing the data, while Part 2 focuses on creating a user-friendly interface. Specifically, we'll cover cleaning, handling missing data, and restructuring the dataset to build 3SA.
 
-## Data Preprocessing and cleaning to build 3SA : Process To Follow
+## Data Cleaning and Preprocessing Process to build 3SA 
 
-Below is the process we can follow : 
-1. Data Collection :
-    - Manually collects data from university websites and social media (Twitter and LinkedIn)
-   
-2. Importing necessary libraries and loading the scholarship data :
-    - Imports necessary Python libraries
-    - Loads the dataset
-
-2. Data Exploration :
-   - Displays the first few rows of the dataset.
-   - Retrieves information about the dataset.
-
-3. Features Selection :
-   - Identifies the necessary features
-   - Creates a new DataFrame with selected features.
-      
-4. Splitting Columns into Separate Rows :
-   - Splits certain columns into separate rows.
-   - Resets the index for unique labels.
-
-5. Handling Missing Data :
-   - Identifies missing data in the cleaned dataset.
-   - Drops rows with missing 'Name' values.
-   - Fills remaining missing values with empty strings.
-
-6. Data Saving:
-   - Saves the cleaned dataset as "scholarship_df.csv."
+Let's break down the steps involved :
 
 ### 1. Data Collection 
 
-So the process starts with collecting the dataset to be used. The data used in this project was manually collected and the raw dataset can be found and downloaded [here](https://raw.githubusercontent.com/barbaraaboagye/My-MachineLearning-Journey/1e19a3a7caf86f8b0603ed100144ff94d536a769/Projects/Scholarship%20recommender%20system/scholarshipdatabase.csv). 
+The first step is collecting the dataset. The data used in this project was manually collected from university websites and social media platforms (Twitter and LinkedIn). You can find and download the raw dataset [here](https://raw.githubusercontent.com/barbaraaboagye/My-MachineLearning-Journey/1e19a3a7caf86f8b0603ed100144ff94d536a769/Projects/Scholarship%20recommender%20system/scholarshipdatabase.csv). 
 
 ### 2. Importing libraries and loading dataset
+
 Let's start by importing the necessary libraries and the [dataset](https://raw.githubusercontent.com/barbaraaboagye/My-MachineLearning-Journey/1e19a3a7caf86f8b0603ed100144ff94d536a769/Projects/Scholarship%20recommender%20system/scholarshipdatabase.csv) :
 
 ```python
@@ -76,8 +51,8 @@ The libraries used are :
 
 The dataset has various headings with several missing data as shown above. The next step will be to explore the dataset further.
 
-### Data Exploration
-Now, let's use the `info()` method to get information about the DataFrame  including data types and the presence of any missing values.
+### 3. Data Exploration
+Now, let's use the `info()` method to get information about the data types and the presence of any missing values in our dataset.
 
 ``` python
 # Get information about the dataset
@@ -87,9 +62,9 @@ print(df.info())
 
 There are 704 entries with several null entries. The shape of the original dataset is (704,11)
 
-### 3. Features selection
+### 4. Features selection
 
-Out of the 11 columns/features present in the DataFrame, we are only interested in 4. We will therefore create a new DataFrame with only the relevant features. 
+Out of the 11 columns/features present in the dataset, we are only interested in 4. We will therefore create a new DataFrame with only the relevant features. 
 
 ``` Python
 # New dataframe with selected features
@@ -106,9 +81,9 @@ data.shape
 ```
 ![](https://github.com/barbaraaboagye/barbaraaboagye.github.io/blob/552426fca6c3657fd9bf0c3ea08a2e467ea2b692/_posts/images/uncleaned%20dataset%20shape.png)
 
-### 4. Splitting Columns into Separate Rows
+### 5. Splitting Columns into Separate Rows
 
-The selected features: `Area of specialisation`, `Country` and `Level needed` contains multiple entries separated by commas. The next step involves splitting these entries into separate rows to make the data more accessible. 
+The selected features: `Area of specialisation`, `Country` and `Level needed` contains multiple entries separated by commas. Split these entries into separate rows to make the data more accessible. 
 
 ``` Python
 # Split certain columns into separate rows
@@ -160,10 +135,10 @@ data.isnull().sum()
 
 ### 6. Data Saving
 
-Our dataset is now clean and ready to be used to build 3SA. It is saved in a new CSV. 
+Our dataset is now clean and ready to be used to build 3SA. It is saved in a new CSV file as "scholarship_df.csv"
 
 ``` Python
 # Save the cleaned dataset
 data.to_csv('scholarship_df.csv', index=False)
 ```
-You can access the complete python code [here](https://github.com/barbaraaboagye/My-MachineLearning-Journey/blob/31e326d6e5a6ac53e94cd4e9fc3145590a404c52/Projects/Scholarship%20recommender%20system/Data_processing.ipynb).
+Now, your dataset is clean and ready to be used for building the School and Scholarship Search App (3SA). You can access the complete Python code [here](https://github.com/barbaraaboagye/My-MachineLearning-Journey/blob/31e326d6e5a6ac53e94cd4e9fc3145590a404c52/Projects/Scholarship%20recommender%20system/Data_processing.ipynb).
