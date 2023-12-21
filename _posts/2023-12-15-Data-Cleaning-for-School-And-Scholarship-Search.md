@@ -1,7 +1,7 @@
 ---
 layout:     post
 title:     HOW TO BUILD A SCHOOL AND SCHOLARSHIP SEARCH APP (3SA) USING PYTHON AND STREAMLIT (PART 1): DATA CLEANING AND PRE-PROCESSING
-subtitle:   <em> DATA CLEANING AND PRE-PROCESSING </em>
+subtitle: *DATA CLEANING AND PRE-PROCESSING*
 date:       2023-12-17
 author:     "Barbara Aboagye"
 header-img: 
